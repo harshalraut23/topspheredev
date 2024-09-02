@@ -65,9 +65,10 @@ body {
 
 /* Text at the extreme left within page content */
 .left-text {
-    position: absolute; /* Absolute positioning within the .content container */
-    left: 10;
-    top: 50%; /* Vertically center */
+    color: #fefae0; /* Set font color to #fefae0 */
+    position: relative; /* Absolute positioning within the .content container */
+    margin-left: 10px; /* Left margin of 10px */
+    margin-top: 20px; /* Top margin of 20px */
     padding: 10px;
     color: white; /* Text color for contrast */
     font-size: 32px; /* Adjust font size as needed */
