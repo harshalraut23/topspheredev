@@ -66,7 +66,7 @@ body {
 /* Text at the extreme left within page content */
 .left-text {
     position: absolute; /* Absolute positioning within the .content container */
-    left: 0;
+    left: 10;
     top: 50%; /* Vertically center */
     padding: 10px;
     color: white; /* Text color for contrast */
