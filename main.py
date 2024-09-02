@@ -16,28 +16,28 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # Database connection details
-server = 'top-insights-dev.database.windows.net'
-database = 'top-insights-dev-db1'
-username = 'CloudSA8bd104de'
-password = 'KQxaecGh7K6V'
-connection_string = (
-    f"mssql+pyodbc://{username}:{password}@{server}/{database}"
-    f"?driver=ODBC+Driver+17+for+SQL+Server"
-)
+# server = 'top-insights-dev.database.windows.net'
+# database = 'top-insights-dev-db1'
+# username = 'CloudSA8bd104de'
+# password = 'KQxaecGh7K6V'
+# connection_string = (
+#     f"mssql+pyodbc://{username}:{password}@{server}/{database}"
+#     f"?driver=ODBC+Driver+17+for+SQL+Server"
+# )
 
 # Create SQLAlchemy engine and session
-engine = create_engine(connection_string)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+# engine = create_engine(connection_string)
+# SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Function to fetch data from the database
-def get_data_from_azure_sql(query):
-    with engine.connect() as connection:
-        df = pd.read_sql(query, connection)
-    return df
+# def get_data_from_azure_sql(query):
+#     with engine.connect() as connection:
+#         df = pd.read_sql(query, connection)
+#     return df
 
 # Fetch reports data
-query_reports = "SELECT * FROM snow.techops_reports"
-df_reports = get_data_from_azure_sql(query_reports)
+# query_reports = "SELECT * FROM snow.techops_reports"
+# df_reports = get_data_from_azure_sql(query_reports)
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
