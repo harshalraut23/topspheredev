@@ -32,6 +32,10 @@ def get_data_from_azure_sql(query):
     df = pd.read_sql(query, engine)
     return df
 
+# Fetch reports data from Azure SQL
+query_reports = "SELECT * FROM snow.techops_reports"
+df_reports = get_data_from_azure_sql(query_reports)
+
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     # Generate the HTML content
