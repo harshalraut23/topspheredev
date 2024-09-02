@@ -4,7 +4,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-image: url('/static/SnowGate.png'); /* Background image */
-    background-size: 100% 70vh; /* Set width to 100% and height to 70% of the viewport */
+    background-size: cover; /* Set width to 100% and height to 70% of the viewport */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     height: 100vh; /* Full viewport height */
