@@ -52,6 +52,39 @@ body {
     border-radius: 5px; /* Rounded corners on hover */
 }
 
+* Dropdown Menu */
+.dropdown-menu {
+    display: none; /* Hide the dropdown menu by default */
+    position: absolute; /* Position dropdown relative to the parent */
+    top: 100%; /* Position below the parent menu item */
+    left: 0;
+    background-color: royalblue; /* Background color for the dropdown menu */
+    list-style: none; /* Remove default list styling */
+    padding: 0;
+    margin: 0;
+    z-index: 1000; /* Ensure dropdown is above other content */
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    color: #fefae0; /* Color of dropdown links */
+    text-decoration: none; /* Remove underline from dropdown links */
+}
+
+/* Show the dropdown menu on hover */
+.navbar-menu li:hover .dropdown-menu {
+    display: block; /* Show dropdown menu */
+}
+
+/* Styling for the dropdown links on hover */
+.dropdown-menu a:hover {
+    background-color: #333; /* Change background on hover */
+}
+
 /* Page Content Styles */
 .content {
     padding: 20px;
