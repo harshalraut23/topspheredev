@@ -1,0 +1,75 @@
+/* Basic reset and styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Style for the horizontal menu bar */
+.navbar {
+    background-color: #0E1B3A; /* Set background color to royal blue */
+    width: 100%; /* Make the menu bar span the full width of the page */
+    padding: 10px 20px; /* Add some padding to the top and bottom of the menu bar */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Space out the title and menu items */
+}
+
+.navbar-title h1 {
+    color: white; /* Set text color to white */
+    margin: 0; /* Remove default margin */
+    padding-left: 20px; /* Add some padding to the left */
+    font-style: italic; /* Make the text italic */
+}
+
+.navbar-menu {
+    list-style-type: none; /* Remove bullet points from the list */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox to align items horizontally */
+}
+
+.navbar-menu li {
+    margin: 0 15px; /* Add space between menu items */
+}
+
+.navbar-menu a {
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* Set text color to white */
+    font-size: 16px; /* Adjust font size */
+    padding: 10px 15px; /* Add some padding around the text */
+    display: block; /* Make the links block-level elements to fill the padding */
+}
+
+.navbar-menu a:hover {
+    background-color: #004080; /* Darker blue background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+/* Page Content Styles */
+.content {
+    padding: 20px;
+    position: relative; /* Allow absolute positioning within this container */
+}
+
+/* Content styles */
+.content {
+    padding: 0px;
+}
+
+/* Text at the extreme left within page content */
+.left-text {
+    position: absolute; /* Absolute positioning within the .content container */
+    left: 0;
+    top: 0;
+    padding: 10px;
+    color: white; /* Text color for contrast */
+    font-size: 16px; /* Adjust font size as needed */
+    z-index: 1; /* Ensure text is above other content in the .content */
+}
+
+.content img {
+    width: 100%;
+    height: 700px;
+    display: block; /* Remove any extra space below the image */
+}
