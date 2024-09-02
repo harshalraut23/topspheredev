@@ -65,6 +65,7 @@ body {
     padding: 10px;
     color: white; /* Text color for contrast */
     font-size: 16px; /* Adjust font size as needed */
+    font-style: italic; /* Italics for the text */
     z-index: 1; /* Ensure text is above other content in the .content */
 }
 
