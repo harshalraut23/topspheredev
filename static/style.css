@@ -4,7 +4,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-image: url('/static/SnowGate.png'); /* Background image */
-    background-size: 100% 40vh; /* Set width to 100% and height to 70% of the viewport */
+    background-size: 100% 65vh; /* Set width to 100% and height to 70% of the viewport */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     height: 100vh; /* Full viewport height */
@@ -67,10 +67,10 @@ body {
 .left-text {
     position: absolute; /* Absolute positioning within the .content container */
     left: 0;
-    top: 0;
+    top: 50%; /* Vertically center */
     padding: 10px;
     color: white; /* Text color for contrast */
-    font-size: 16px; /* Adjust font size as needed */
+    font-size: 32px; /* Adjust font size as needed */
     font-style: italic; /* Italics for the text */
     z-index: 1; /* Ensure text is above other content in the .content */
 }
