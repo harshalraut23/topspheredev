@@ -34,7 +34,11 @@
     <script>
         function toggleDropdown() {
             var dropdownContent = document.getElementById("dropdown-content");
-            dropdownContent.style.display = dropdownContent.style.display === "flex" ? "none" : "flex";
+            if (dropdownContent.style.display === "flex") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "flex";
+            }
         }
 
         // Close the dropdown if the user clicks outside of it
