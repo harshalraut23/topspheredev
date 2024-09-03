@@ -12,7 +12,8 @@ body {
     background-color: #0E1B3A;
     overflow: hidden;
     padding: 10px 20px;
-    justify-content: space-around;
+    justify-content: flex-start;
+    font-size: 18px;   /* Increase the text size */
 }
 
 .navbar a {
@@ -31,7 +32,16 @@ body {
 
 .navbar a.active {
     color: white;
+    font-size: 20px;   /* Increase the text size */
+    font-weight: bold; /* Make the text bold */
+    font-style: italic; /* Make the text italic */
 }
+
+.navbar a.active:hover {
+    background-color: transparent; /* No background color change on hover */
+    color: white; /* Keep the text color white */
+}
+
 
 h1 {
     padding: 10px;
