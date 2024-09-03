@@ -2,7 +2,10 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-image: url('/static/SnowGate.png');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
     color: #000000;
     overflow-x: hidden;
     padding-bottom: 50px;
