@@ -30,24 +30,23 @@
     <h1>Welcome to My FastAPI Webpage</h1>
     <p>This is a simple webpage served using FastAPI.</p>
 
-    <!-- Add this JavaScript at the bottom of your HTML file -->
+    <!-- JavaScript to manage active state -->
     <script>
-        // Toggle the dropdown menu visibility when the "Reports" button is clicked
-        document.getElementById("reportButton").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent the default anchor behavior
-            var dropdownContent = document.getElementById("dropdown-content");
-            dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
-        });
+        // Function to set the "active" class
+        function setActiveClass(event) {
+            // Remove "active" class from all menu items
+            document.querySelectorAll('.navbar a').forEach(function(link) {
+                link.classList.remove('active');
+            });
 
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            var dropdownContent = document.getElementById("dropdown-content");
-            var reportButton = document.getElementById("reportButton");
-
-            if (!reportButton.contains(event.target) && !dropdownContent.contains(event.target)) {
-                dropdownContent.style.display = "none";
-            }
+            // Add "active" class to the clicked menu item
+            event.target.classList.add('active');
         }
+
+        // Attach click event listener to all menu items
+        document.querySelectorAll('.navbar a').forEach(function(link) {
+            link.addEventListener('click', setActiveClass);
+        });
     </script>
 </body>
 </html>

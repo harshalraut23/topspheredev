@@ -28,11 +28,6 @@ body {
     position: relative; /* Add relative positioning to position the line */
 }
 
-.navbar a:hover {
-    background-color: transparent; /* Remove the background color change on hover */
-    color: white; /* Keep the text color white */
-}
-
 .navbar a::before {
     content: '';
     position: absolute;
@@ -44,23 +39,17 @@ body {
     transition: width 0.3s ease; /* Smooth transition effect */
 }
 
+/* Add hover effect */
 .navbar a:hover::before {
     width: 100%; /* Expand the line to full width on hover */
 }
 
-.navbar a.active {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    font-style: italic;
+/* Active state styling */
+.navbar a.active::before {
+    width: 100%; /* Keep the line visible when active */
 }
 
-.navbar a.active:hover {
-    background-color: transparent;
-    color: white;
-}
-
-/* Prevent hover effect for the "no-hover" class and style it */
+/* No-hover class (for the "techOps sphere" text) */
 .navbar a.no-hover {
     font-style: italic; /* Make the text italic */
     font-size: 24px;    /* Change the font size to 24px */
