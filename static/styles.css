@@ -19,8 +19,8 @@ body {
     float: left;
     display: block;
     color: white;
-    text-align: center;
-    padding: 14px 20px;
+    text-align: left;
+    padding: 12px 20px;
     text-decoration: none;
 }
 
@@ -30,12 +30,11 @@ body {
 }
 
 .navbar a.active {
-    background-color: #04AA6D;
     color: white;
 }
 
 h1 {
-    padding: 20px;
+    padding: 10px;
 }
 
 p {
