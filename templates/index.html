@@ -11,7 +11,7 @@
     <div class="navbar">
         <a href="/" class="active">techOps sphere</a>
         <div class="dropdown">
-            <a href="#reports" class="dropbtn" onclick="toggleDropdown()">Reports</a>
+            <a href="#reports" class="dropbtn" id="reportButton">Reports</a>
             <div class="dropdown-content" id="dropdown-content">
                 <a href="#performance-reports">O&L Tech Ops Performance Reports</a>
                 <a href="#overall-insights">Overall Technology Operational Insights</a>
@@ -32,25 +32,20 @@
 
     <!-- Add this JavaScript at the bottom of your HTML file -->
     <script>
-        function toggleDropdown() {
+        // Toggle the dropdown menu visibility when the "Reports" button is clicked
+        document.getElementById("reportButton").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default anchor behavior
             var dropdownContent = document.getElementById("dropdown-content");
-            if (dropdownContent.style.display === "flex") {
-                dropdownContent.style.display = "none";
-            } else {
-                dropdownContent.style.display = "flex";
-            }
-        }
+            dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+        });
 
         // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.style.display === "flex") {
-                        openDropdown.style.display = "none";
-                    }
-                }
+            var dropdownContent = document.getElementById("dropdown-content");
+            var reportButton = document.getElementById("reportButton");
+
+            if (!reportButton.contains(event.target) && !dropdownContent.contains(event.target)) {
+                dropdownContent.style.display = "none";
             }
         }
     </script>
