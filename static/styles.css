@@ -60,6 +60,21 @@ body {
     color: white;
 }
 
+/* Prevent hover effect for the "no-hover" class and style it */
+.navbar a.no-hover {
+    font-style: italic; /* Make the text italic */
+    font-size: 24px;    /* Change the font size to 24px */
+}
+
+.navbar a.no-hover:hover {
+    background-color: transparent; /* Ensure background doesn't change */
+    color: white; /* Ensure text color doesn't change */
+}
+
+.navbar a.no-hover:hover::before {
+    width: 0; /* Prevent the line from appearing */
+}
+
 .dropdown {
     position: relative;
 }
