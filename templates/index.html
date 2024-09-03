@@ -11,8 +11,8 @@
     <div class="navbar">
         <a href="/" class="active">techOps sphere</a>
         <div class="dropdown">
-            <a href="#reports" class="dropbtn">Reports</a>
-            <div class="dropdown-content">
+            <a href="#reports" class="dropbtn" onclick="toggleDropdown()">Reports</a>
+            <div class="dropdown-content" id="dropdown-content">
                 <a href="#performance-reports">O&L Tech Ops Performance Reports</a>
                 <a href="#overall-insights">Overall Technology Operational Insights</a>
                 <a href="#terminal-insights">Terminal Insights</a>
@@ -29,5 +29,26 @@
 
     <h1>Welcome to My FastAPI Webpage</h1>
     <p>This is a simple webpage served using FastAPI.</p>
+
+    <!-- Add this JavaScript at the bottom of your HTML file -->
+    <script>
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdown-content");
+            dropdownContent.style.display = dropdownContent.style.display === "flex" ? "none" : "flex";
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === "flex") {
+                        openDropdown.style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>
