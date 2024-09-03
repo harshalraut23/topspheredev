@@ -14,7 +14,7 @@ body {
 
 .navbar {
     display: flex;
-    background-color: #0E1B3A;
+    /*background-color: #0E1B3A;*/
     padding: 0px 20px;
     justify-content: flex-start;
     font-size: 18px;
