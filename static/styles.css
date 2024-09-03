@@ -1,28 +1,17 @@
-/* Basic reset and global styles */
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Navigation bar styles */
 .navbar {
     background-color: #333;
     overflow: hidden;
+    padding: 10px;
 }
 
-.navbar-menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center; /* Center the menu items */
-}
-
-.navbar-menu li {
-    margin: 0;
-}
-
-.navbar-menu li a {
+.navbar a {
+    float: left;
     display: block;
     color: white;
     text-align: center;
@@ -30,11 +19,20 @@ body {
     text-decoration: none;
 }
 
-.navbar-menu li a:hover {
-    background-color: #575757;
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-/* Page content styling */
-.content {
+.navbar a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+h1 {
     padding: 20px;
+}
+
+p {
+    padding: 0 20px 20px 20px;
 }
