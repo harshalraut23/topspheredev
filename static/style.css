@@ -52,7 +52,7 @@ body {
     border-radius: 5px; /* Rounded corners on hover */
 }
 
-* Dropdown Menu */
+/* Dropdown Menu */
 .dropdown-menu {
     display: none; /* Hide the dropdown menu by default */
     position: absolute; /* Position dropdown relative to the parent */
