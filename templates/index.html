@@ -4,24 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FastAPI Webpage</title>
+    <!-- Link to the external CSS file -->
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body>
     <div class="navbar">
         <a href="/" class="no-hover">techOps sphere</a>
         <div class="dropdown">
-            <a href="#reports" class="dropbtn">Reports</a>
-            <div class="dropdown-content">
-                {% for section, reports in sections.items() %}
-                <div class="section">
-                    <strong>{{ section }}</strong>
-                    <div class="report-list">
-                        {% for report in reports %}
-                        <a href="{{ report.weburl }}">{{ report.title }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endfor %}
+            <a href="#reports" class="dropbtn" id="reportButton">Reports</a>
+            <div class="dropdown-content" id="dropdown-content">
+                <a href="#performance-reports">O&L Tech Ops Performance Reports</a>
+                <a href="#overall-insights">Overall Technology Operational Insights</a>
+                <a href="#terminal-insights">Terminal Insights</a>
+                <a href="#upcoming-reports">Upcoming Reports</a>
             </div>
         </div>
         <a href="#brands">Brands</a>
