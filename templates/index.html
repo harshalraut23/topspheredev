@@ -13,7 +13,10 @@
         <div class="dropdown">
             <a href="#reports" class="dropbtn" id="reportButton">Reports</a>
             <div class="dropdown-content" id="dropdown-content">
-                <!-- Dropdown content will be populated by JavaScript -->
+                <a href="#performance-reports">O&L Tech Ops Performance Reports</a>
+                <a href="#overall-insights">Overall Technology Operational Insights</a>
+                <a href="#terminal-insights">Terminal Insights</a>
+                <a href="#upcoming-reports">Upcoming Reports</a>
             </div>
         </div>
         <a href="#brands">Brands</a>
@@ -24,65 +27,26 @@
         <a href="#request">Request</a>
     </div>
 
-    <h1>Welcome to My FastAPI Webpage</h1>
-    <p>This is a simple webpage served using FastAPI.</p>
+    <h1>techOps sphere -</h1>
+    <p>Gateway to unlock insights & drive efficiency with TechOps data and reporting.</p>
 
-    <!-- Add this JavaScript at the bottom of your HTML file -->
+    <!-- JavaScript to manage active state -->
     <script>
-        document.getElementById("reportButton").addEventListener("click", function(event) {
-            event.preventDefault();
-            var dropdownContent = document.getElementById("dropdown-content");
-            dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
-        });
+        // Function to set the "active" class
+        function setActiveClass(event) {
+            // Remove "active" class from all menu items
+            document.querySelectorAll('.navbar a').forEach(function(link) {
+                link.classList.remove('active');
+            });
 
-        window.onclick = function(event) {
-            var dropdownContent = document.getElementById("dropdown-content");
-            var reportButton = document.getElementById("reportButton");
-
-            if (!reportButton.contains(event.target) && !dropdownContent.contains(event.target)) {
-                dropdownContent.style.display = "none";
-            }
-        };
-
-        async function loadReports() {
-            try {
-                const response = await fetch('/reports');
-                const groupedReports = await response.json();
-                const dropdownContent = document.getElementById("dropdown-content");
-
-                // Clear existing content
-                dropdownContent.innerHTML = '';
-
-                Object.keys(groupedReports).forEach(section => {
-                    // Create a section title
-                    const sectionDiv = document.createElement("div");
-                    sectionDiv.classList.add("section");
-
-                    const sectionTitle = document.createElement("strong");
-                    sectionTitle.textContent = section;
-                    sectionDiv.appendChild(sectionTitle);
-
-                    // Create a list for reports
-                    const reportList = document.createElement("ul");
-
-                    groupedReports[section].forEach(report => {
-                        const listItem = document.createElement("li");
-                        const a = document.createElement("a");
-                        a.href = report.weburl;
-                        a.textContent = report.title;
-                        listItem.appendChild(a);
-                        reportList.appendChild(listItem);
-                    });
-
-                    sectionDiv.appendChild(reportList);
-                    dropdownContent.appendChild(sectionDiv);
-                });
-            } catch (error) {
-                console.error("Error fetching reports:", error);
-            }
+            // Add "active" class to the clicked menu item
+            event.target.classList.add('active');
         }
 
-        document.addEventListener("DOMContentLoaded", loadReports);
+        // Attach click event listener to all menu items
+        document.querySelectorAll('.navbar a').forEach(function(link) {
+            link.addEventListener('click', setActiveClass);
+        });
     </script>
 </body>
 </html>

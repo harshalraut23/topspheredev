@@ -3,9 +3,9 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('/static/SnowGate.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
     color: #000000;
     overflow-x: hidden;
     padding-bottom: 50px;
@@ -14,12 +14,12 @@ body {
 
 .navbar {
     display: flex;
-    background-color: #0E1B3A;
+    /*background-color: #0E1B3A;*/
     padding: 0px 20px;
     justify-content: flex-start;
     font-size: 18px;
     height: 60px;
-    align-items: center;
+    align-items: center;    
 }
 
 .navbar a {
@@ -28,7 +28,7 @@ body {
     text-align: center;
     padding: 12px 20px;
     text-decoration: none;
-    position: relative;
+    position: relative; /* Add relative positioning to position the line */
 }
 
 .navbar a::before {
@@ -39,29 +39,32 @@ body {
     background-color: white;
     top: 0;
     left: 0;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease; /* Smooth transition effect */
 }
 
+/* Add hover effect */
 .navbar a:hover::before {
-    width: 100%;
+    width: 100%; /* Expand the line to full width on hover */
 }
 
+/* Active state styling */
 .navbar a.active::before {
-    width: 100%;
+    width: 100%; /* Keep the line visible when active */
 }
 
+/* No-hover class (for the "techOps sphere" text) */
 .navbar a.no-hover {
-    font-style: italic;
-    font-size: 24px;
+    font-style: italic; /* Make the text italic */
+    font-size: 24px;    /* Change the font size to 24px */
 }
 
 .navbar a.no-hover:hover {
-    background-color: transparent;
-    color: white;
+    background-color: transparent; /* Ensure background doesn't change */
+    color: white; /* Ensure text color doesn't change */
 }
 
 .navbar a.no-hover:hover::before {
-    width: 0;
+    width: 0; /* Prevent the line from appearing */
 }
 
 .dropdown {
@@ -69,36 +72,16 @@ body {
 }
 
 .dropdown-content {
-    display: none;
+    display: none; /* Hidden by default */
     position: absolute;
     background-color: #f9f9f9;
-    min-width: auto;
+    min-width: auto; /* Set to auto for the content to adjust based on items */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1000;
     top: 100%;
-    left: 0;
+    left: 0; /* Align the dropdown to the left of the Reports button */
     flex-direction: row; /* Arrange items in a row for horizontal layout */
     white-space: nowrap;
-}
-
-.dropdown-content .section {
-    padding: 10px;
-}
-
-.dropdown-content .section strong {
-    display: block;
-    font-weight: bold;
-    padding-bottom: 5px;
-}
-
-.dropdown-content ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown-content li {
-    padding: 5px 0;
 }
 
 .dropdown-content a {
@@ -116,5 +99,5 @@ body {
 }
 
 .dropdown:hover .dropdown-content {
-    display: flex;
+    display: flex; /* Display flex to show items horizontally */
 }
