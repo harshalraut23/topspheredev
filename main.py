@@ -16,7 +16,7 @@ def get_data_from_azure_sql(query):
     
     connection_string = (
         f"mssql+pyodbc://{username}:{password}@{server}/{database}"
-        f"?driver=ODBC+Driver+17+for+SQL+Server"
+        f"?driver=ODBC+Driver+17+for+SQL+Server&Encrypt=yes"        
     )
     
     engine = create_engine(connection_string)
