@@ -5,6 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import create_engine
 import pandas as pd
+import pyodbc
 
 # Function to connect to Azure SQL Database and fetch data
 def get_data_from_azure_sql(query):
