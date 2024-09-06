@@ -30,6 +30,46 @@ body {
     position: relative;
 }
 
+/* Pseudo-element for the hover line effect */
+.navbar a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* Height of the line */
+    background-color: white; /* Line color */
+    top: 0; /* Line position (can change to bottom if preferred) */
+    left: 0;
+    transition: width 0.3s ease; /* Smooth transition effect */
+}
+
+/* Hover effect: Line expands to full width */
+.navbar a:hover::before {
+    width: 100%; /* Expand the line to full width on hover */
+}
+
+/* Active state: Keep the line visible when the link is active */
+.navbar a.active::before {
+    width: 100%; /* Keep the line expanded when active */
+}
+
+/* Styling for "techOps sphere" link */
+.navbar a.no-hover {
+    font-style: italic; /* Make the text italic */
+    font-size: 24px;    /* Change the font size to 24px */
+    background-color: transparent; /* Ensure no background color change */
+    margin-right: 70px; /* Add space between TechOps Sphere and Reports */
+}
+
+/* Prevent hover effect on the "techOps sphere" link */
+.navbar a.no-hover:hover {
+    background-color: transparent; /* Ensure background doesn't change */
+    color: white; /* Ensure text color doesn't change */
+}
+
+.navbar a.no-hover:hover::before {
+    width: 0; /* Prevent the line from appearing */
+}
+
 .dropdown {
     position: relative;
 }
@@ -81,4 +121,33 @@ body {
 
 .dropdown:hover .dropdown-content {
     display: flex; /* Show the dropdown when hovering */
+}
+
+/* Set the background for the report page */
+.report-body {
+    background-image: url('/static/Reportbackground.png');
+    background-size: cover; /* Ensure the image covers the entire page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Ensure the background doesn't scroll */
+}
+
+/* Adjust the report title font size and margins to decrease height */
+.report-title {
+    font-size: 18px; /* Decrease the font size of the title */
+    color: whitesmoke;
+    font-weight: normal; /* Optional: Adjust the weight to normal */
+    margin: 5px 0; /* Reduce the vertical margin */
+    text-align: center; /* Center align the title */
+}
+
+/* Decrease the padding or height of the block above the report */
+iframe {
+    margin-top: 10px; /* Adjust this value to reduce the space above the iframe */
+}
+
+/* If the entire body has padding/margin, ensure it's minimized */
+body {
+    padding: 0;
+    margin: 0;
 }

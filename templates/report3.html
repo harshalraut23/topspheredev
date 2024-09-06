@@ -4,22 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monthly 2inBox Ops Excellence Report</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" type="text/css" href="/static/styles.css"> <!-- Same CSS file as index.html -->
 </head>
 <body>
     <div class="navbar">
         <a href="/" class="no-hover">techOps sphere</a>
-        <a href="/report1">Monthly 2inBox Ops Excellence Report</a>
-        <a href="/report2">Weekly Ops Excellence Report</a>
-        <a href="/report3">Platform Spotlight Update</a>
+        <div class="dropdown">
+            <a href="#reports" class="dropbtn">Reports</a>
+            <div class="dropdown-content">
+                <div class="dropdown-section">
+                    <div class="title">O&L Tech Ops Performance Reports</div>
+                    <div class="report-list">
+                        <a href="/report1">Monthly 2inBox Ops Excellence Report</a>
+                        <a href="/report2">Weekly Ops Excellence Report</a>
+                        <a href="/report3">Platform Spotlight Update</a>
+                    </div>
+                </div>
+                <div class="dropdown-section">
+                    <div class="title">Overall Technology Operational Insights</div>
+                    <div class="report-list">
+                        <a href="/report4">Enterprise Tech Update</a>
+                    </div>
+                </div>
+                <div class="dropdown-section">
+                    <div class="title">Terminal Insights</div>
+                    <div class="report-list">
+                        <a href="/report5">Terminal Operations Monthly Report</a>
+                        <a href="/report6">Terminal Performance Overview</a>
+                    </div>
+                </div>
+                <div class="dropdown-section">
+                    <div class="title">Upcoming Reports</div>
+                    <div class="report-list">
+                        <a href="/report7">Future Technology Initiatives</a>
+                        <a href="/report8">Roadmap Insights</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#brands">Brands</a>
+        <a href="#success-stories">Success Stories</a>
+        <a href="#documentation">Documentation</a>
+        <a href="#about-us">About Us</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#request">Request</a>
     </div>
 
-    <h1>Weekly Ops Excellence Report</h1>
+    <h1 class="report-title">Weekly Ops Excellence Report</h1>
 
+    <!-- Power BI Report Embed -->
     <iframe 
         src="https://app.powerbi.com/reportEmbed?reportId=4d88fb6b-0dbd-4989-8cbd-59f6323a3150&autoAuth=true&ctid=05d75c05-fa1a-42e7-9cf1-eb416c396f2d" 
         width="100%" 
         height="800" 
         frameborder="0" 
         allowFullScreen="true"></iframe>
+
+    <!-- Optional Footer or Additional Content -->
 </body>
 </html>
