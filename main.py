@@ -13,3 +13,8 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+# Report 1 page
+@app.get("/report1", response_class=HTMLResponse)
+async def report1(request: Request):
+    return templates.TemplateResponse("report1.html", {"request": request})

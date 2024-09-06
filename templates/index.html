@@ -6,18 +6,6 @@
     <title>FastAPI Webpage</title>
     <!-- Link to the external CSS file -->
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
-    <style>
-        .dropdown-content iframe {
-            display: none;
-            width: 100%;
-            height: 600px;
-            border: none;
-        }
-        
-        .dropdown-content a:hover + iframe {
-            display: block;
-        }
-    </style>
 </head>
 <body>
     <div class="navbar">
@@ -25,14 +13,41 @@
         <div class="dropdown">
             <a href="#reports" class="dropbtn" id="reportButton">Reports</a>
             <div class="dropdown-content" id="dropdown-content">
-                <a href="#performance-reports">O&L Tech Ops Performance Reports</a>
-                <iframe src="https://app.powerbi.com/reportEmbed?reportId=bac43fa1-006b-4885-b4a2-e71b75679579&autoAuth=true&ctid=05d75c05-fa1a-42e7-9cf1-eb416c396f2d" allowFullScreen="true"></iframe>
+                <!-- First title with vertical reports -->
+                <div class="dropdown-section">
+                    <div class="title">O&L Tech Ops Performance Reports</div>
+                    <div class="report-list">
+                        <a href="/report1">Monthly 2inBox Ops Excellence Report</a>
+                        <a href="/report2">Weekly Ops Excellence Report</a>
+                        <a href="/report3">Platform Spotlight Update</a>
+                    </div>
+                </div>
 
-                <a href="#overall-insights">Monthly 2inBox Ops Excellence Report</a>
-                <iframe src="https://app.powerbi.com/reportEmbed?reportId=7ebc15f6-84cd-4767-901a-b8a64795ce7c&autoAuth=true&ctid=05d75c05-fa1a-42e7-9cf1-eb416c396f2d" allowFullScreen="true"></iframe>
+                <!-- Second title with vertical reports -->
+                <div class="dropdown-section">
+                    <div class="title">Overall Technology Operational Insights</div>
+                    <div class="report-list">
+                        <a href="/report4">Enterprise Tech Update</a>
+                    </div>
+                </div>
 
-                <a href="#terminal-insights">Platform Spotlight Update</a>
-                <iframe src="https://app.powerbi.com/reportEmbed?reportId=4d88fb6b-0dbd-4989-8cbd-59f6323a3150&autoAuth=true&ctid=05d75c05-fa1a-42e7-9cf1-eb416c396f2d" allowFullScreen="true"></iframe>
+                <!-- Third title with vertical reports -->
+                <div class="dropdown-section">
+                    <div class="title">Terminal Insights</div>
+                    <div class="report-list">
+                        <a href="/report5">Terminal Operations Monthly Report</a>
+                        <a href="/report6">Terminal Performance Overview</a>
+                    </div>
+                </div>
+
+                <!-- Fourth title with vertical reports -->
+                <div class="dropdown-section">
+                    <div class="title">Upcoming Reports</div>
+                    <div class="report-list">
+                        <a href="/report7">Future Technology Initiatives</a>
+                        <a href="/report8">Roadmap Insights</a>
+                    </div>
+                </div>
             </div>
         </div>
         <a href="#brands">Brands</a>
