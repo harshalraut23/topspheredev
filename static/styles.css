@@ -40,7 +40,7 @@ body {
     position: absolute;
     width: 0;
     height: 3px;
-    background-color: white;
+    background-color: #f4c430;
     top: 0;
     left: 0;
     transition: width 0.3s ease; /* Smooth transition effect */
@@ -49,11 +49,13 @@ body {
 /* Add hover effect */
 .navbar a:hover::before {
     width: 100%; /* Expand the line to full width on hover */
+    background-color: #f4c430; /* Ensure the hover color is saffron */
 }
 
 /* Active state styling */
 .navbar a.active::before {
     width: 100%; /* Keep the line visible when active */
+    background-color: #f4c430; /* Ensure the hover color is saffron */
 }
 
 /* No-hover class (for the "techOps sphere" text) */
@@ -85,7 +87,7 @@ body {
     z-index: 1000;
     top: 100%;
     left: 0; /* Align the dropdown to the left of the Reports button */
-    flex-direction: column; /* Arrange items in a row for horizontal layout */
+    flex-direction: row; /* Arrange items in a row for horizontal layout */
     white-space: nowrap;
     padding: 10px 15px; /* Adjust padding for spacing */    
 }
@@ -120,11 +122,11 @@ body {
 }
 
 .dropdown-section .title {
-    font-size: 16px; /* Adjust the font size as needed */
-    font-weight: bold; /* Make the titles bold, if desired */
-    margin-bottom: 10px; /* Add space below each title */
+    font-size: 14px; /* Adjust the font size as needed */
+    margin-bottom: 5px; /* Add space below each title */
     color: #333; /* Optional: adjust the color */
-    padding: 10px 35px; /* Adjust padding for spacing */    
+    padding: 10px 15px; /* Adjust padding for spacing */    
+    text-align: left;
 }
 
 /* New styles for content area */
