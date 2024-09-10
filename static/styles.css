@@ -136,3 +136,7 @@ body {
     margin: 65px; /* Apply 15px margin to all sides */
     padding: 35px; /* Optional: add padding for extra spacing inside the content area */
 }
+
+p {
+    color: skyblue;
+}
