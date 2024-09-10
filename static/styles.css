@@ -130,14 +130,49 @@ body {
 }
 
 /* New styles for content area */
+/* Flex container to hold the text and image */
 .content {
-    color: #fefae0;
-    font-style: italic; /* Make the text italic */
-    margin: 65px; /* Apply 15px margin to all sides */
-    padding: 35px; /* Optional: add padding for extra spacing inside the content area */
+    display: flex;
+    flex-direction: column; /* Stack items vertically first */
+    margin-left: 60px; /* Add space between the text and the image */
+    margin-top: 30px; /* Optional: adds some spacing between the title and content */
+    width: 100%; /* Ensure the content container takes full width of the viewport */
+    max-width: 1100px; /* Max width for the content area */
 }
 
-p {
+.content div {
+    display: flex; /* Only apply flexbox to text and image */
+    justify-content: flex-start; /* Push text to the left and image to the right */
+    align-items: flex-start;
+    width: 100%; /* Ensure the container takes full width */
+}
+
+/* Style for the title */
+h1 {
+    width: 700px; /* Ensure the title has a defined width */
+    color: #fefae0;
+    font-style: italic; /* Make the text italic */
+    font-size: 40px; /* Adjust the font size as needed */
+    margin-bottom: 1px; /* Add some space below the title */
+}
+
+/* Style for the paragraph text */
+.text-content {
+    width: 180%; /* Cover 40% of the page width */
     color: skyblue;
-    font-size: 20px; /* Adjust this value to your preference */
+    font-size: 40px; /* Adjust the font size as needed */
+    margin-right: 10px; /* Add space between the text and the image */
+    margin-left: 20px; /* Add space between the text and the image */
+    line-height: 1.2; /* Adjust line height for better readability */
+}
+
+/* Style for the image */
+.right-image {
+    width: 550px; /* Fixed width for the image */
+    height: 400px; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: adds rounded corners */
+    object-fit: cover; /* Ensure the image covers the container */
+    margin-left: 60px; /* Add space between the text and the image */
+    margin-right: 20px; /* Add space between the text and the image */
+    margin-bottom: 90px; /* Optional: adds some spacing between the title and content */
 }
