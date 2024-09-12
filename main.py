@@ -21,10 +21,10 @@ async def report1(request: Request):
 
 # Report 2 page
 @app.get("/report2", response_class=HTMLResponse)
-async def report1(request: Request):
+async def report2(request: Request):
     return templates.TemplateResponse("report2.html", {"request": request})
 
 # Report 3 page
 @app.get("/report3", response_class=HTMLResponse)
-async def report1(request: Request):
+async def report3(request: Request):
     return templates.TemplateResponse("report3.html", {"request": request})
