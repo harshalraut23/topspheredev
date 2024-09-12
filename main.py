@@ -28,3 +28,9 @@ async def report2(request: Request):
 @app.get("/report3", response_class=HTMLResponse)
 async def report3(request: Request):
     return templates.TemplateResponse("report3.html", {"request": request})
+
+# Define the TOPVista page route
+@app.get("/topvista", response_class=HTMLResponse)
+async def topvista(request: Request):
+    return templates.TemplateResponse("topvista.html", {"request": request})
+    

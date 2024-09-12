@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('/static/Snowgatehome.png');
-    background-size: cover; /* Cover the entire viewport */
+    background-size: 2500px 800px; /* Cover the entire viewport */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent repeating the image */
     color: #000000;
@@ -73,6 +73,61 @@ body {
     width: 0; /* Prevent the line from appearing */
 }
 
+/* First section background styling */
+.topvista-section-1 {
+    background-image: url('/static/TopVistaBackground.png');
+    background-size: cover;
+    min-height: 40vh;
+    text-align: center;
+    padding: 100px;
+}
+
+.logo {
+    width: 450px;
+    height: 250px;
+}
+
+h3 {
+    color: #a8e8f9;
+}
+
+/* Second section styling */
+/* Specific styles for TopVista page */
+/* Default TopVista Content Styling */
+.topvista-background {
+    background-image: url('/static/TopVistaBackground.png');
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Ensure it takes up the full viewport height */
+    background-attachment: fixed; /* Keeps the background image fixed */
+    padding: 50px 20px; /* Adjust padding if necessary */
+}
+
+/* Default TopVista Content Styling */
+.topvista-content {
+    background-color: transparent; /* Default background */
+    padding: 50px 20px; /* Adjust padding as needed */
+    text-align: center; /* Center text horizontally */
+    position: relative;
+}
+.topvista-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.topvista-image {
+    width: 450px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.topvista-text {
+    font-size: 1.2rem;
+    color: #a8e8f9;
+    margin: 0;
+}
+
 /* Dropdown styles */
 .dropdown {
     position: relative;
@@ -130,12 +185,31 @@ body {
     text-align: left;
 }
 
-/* New styles for content area */
+/* Success Stories specific dropdown styles */
+.success-stories-dropdown .dropdown-content {
+    display: none;
+    flex-direction: column; /* Ensure vertical stacking */
+}
+
+.success-stories-dropdown:hover .dropdown-content {
+    display: flex; /* Show dropdown as a vertical list for Success Stories */
+}
+
+.success-stories-dropdown .dropdown-content a {
+    width: 100%; /* Ensure links take the full width */
+    text-align: left; /* Align text to the left */
+    padding: 12px 16px;
+}
+
+.success-stories-dropdown .dropdown-content a:hover {
+    background-color: #ddd; /* Add hover effect */
+}
+
 /* Flex container to hold the text and image */
 .content {
     display: flex;
     flex-direction: column; /* Stack items vertically first */
-    margin-left: 60px; /* Add space between the text and the image */
+    margin-left: 60px; /* Adjust this for overall left margin */
     margin-top: 30px; /* Optional: adds some spacing between the title and content */
     width: 100%; /* Ensure the content container takes full width of the viewport */
     max-width: 1100px; /* Max width for the content area */
@@ -159,21 +233,22 @@ h1 {
 
 /* Style for the paragraph text */
 .text-content {
-    width: 180%; /* Cover 40% of the page width */
+    width: 40%; /* Set the paragraph width to cover 40% of the page width */
     color: skyblue;
     font-size: 40px; /* Adjust the font size as needed */
-    margin-right: 10px; /* Add space between the text and the image */
+    margin-right: 60px; /* Add space between the text and the image */
     margin-left: 20px; /* Add space between the text and the image */
     line-height: 1.2; /* Adjust line height for better readability */
 }
 
 /* Style for the image */
 .right-image {
-    width: 550px; /* Fixed width for the image */
-    height: 400px; /* Maintain aspect ratio */
+    width: 650px; /* Fixed width for the image */
+    height: 470px; /* Maintain aspect ratio */
     border-radius: 8px; /* Optional: adds rounded corners */
     object-fit: cover; /* Ensure the image covers the container */
-    margin-left: 60px; /* Add space between the text and the image */
-    margin-right: 50px; /* Add space between the text and the image */
+    margin-left: auto; /* Push the image to the right */
+    margin-right: -500px; /* No margin on the right */
     margin-bottom: 90px; /* Optional: adds some spacing between the title and content */
 }
+
