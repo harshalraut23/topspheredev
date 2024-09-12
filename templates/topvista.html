@@ -4,20 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TopVista</title>
-    <!-- Link to the external CSS file -->
-    <link rel="stylesheet" type="text/css" href="/static/styles.css">
-    <script>
-        function applyTopVistaBackground() {
-            document.querySelector('.topvista-content').classList.add('topvista-background');
-        }
-    </script>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css"> <!-- General styles -->
+    <link rel="stylesheet" type="text/css" href="/static/topvista.css"> <!-- TopVista-specific styles -->
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <div class="navbar">
+    <div class="navbar" id="navbar">
         <a href="/" class="no-hover">techOps sphere</a>
         <div class="dropdown">
-            <a href="#reports" class="dropbtn" id="reportButton">Reports</a>
+            <a href="#reports" class="dropbtn">Reports</a>
             <div class="dropdown-content" id="dropdown-content">
                 <!-- Dropdown content here -->
             </div>
@@ -27,7 +21,7 @@
             <a href="#success-stories" class="dropbtn">Success Stories</a>
             <div class="dropdown-content">
                 <a href="/snowgate">SnowGate</a>
-                <a href="/topvista" onclick="applyTopVistaBackground(); return false;">TOPVista</a>
+                <a href="/topvista" id="topVistaLink">TOPVista</a>
             </div>
         </div>
         <a href="https://maersk-tools.atlassian.net/wiki/spaces/S/overview" target="_blank">Documentation</a>
@@ -36,24 +30,22 @@
         <a href="#request">Request</a>
     </div>
 
-    <!-- TopVista Content -->
-    <div class="topvista-content">
-        <div class="topvista-section">
-            <img src="/static/TOPVistaLogo.png" alt="TopVista Logo" class="topvista-image">
-            <p class="topvista-text">Designed to improve the efficiency of pushing transformed data to a front-end UI</p>
-        </div>
+    <div class="topvista-section">
+        <img src="/static/TOPVistaLogo.png" alt="TopVista Logo" class="topvista-logo">
+        <p class="topvista-text">Designed to improve the efficiency of pushing transformed data to a front-end UI</p>
+    </div>
 
-        <div class="centered-content">
+    <div class="centered-content">
             <h4>Why TOP Vista?</h4>
             <p>TOP Vista streamlines front-end migration into an “assembly line” process.</p>
-
+    
             <h4>Challenges addressed by TOP Vista:</h4>
             <ul>
                 <li><strong>1 Legacy Code Dependency:</strong> Data migrated and transformed in our Insights Engine often requires new front ends.</li>
                 <li><strong>2 Time Constraints:</strong> Creating new reports consumes valuable time that we frequently don't have.</li>
                 <li><strong>3 Maintenance Overhead:</strong> Every new report adds to our maintenance burden.</li>
             </ul>
-
+    
             <h4>How TOP Vista Solves these Challenges:</h4>
             <p>TOP Vista addresses these issues by streamlining front-end migration into an “assembly line” process. This not only frees up development time but also simplifies the user journey from a consumer perspective in the following ways:</p>
             <ul>
@@ -61,20 +53,29 @@
                 <li><strong>2 Centralised Metrics:</strong> All metrics are consolidated in one place.</li>
                 <li><strong>3 Zero Latency:</strong> Immediate data availability.</li>
             </ul>
-
+    
             <h4>Stay Updated</h4>
             <p><strong>TOP Vista is pending formal release. Stay tuned for updates.</strong></p>
             <p>If you're interested in becoming a trial user, please contact: @Matt Fletcher</p>
-
+    
             <a href="https://app.powerbi.com/reportEmbed?reportId=52513b97-4799-41f0-9d82-f5e116c054e5&autoAuth=true&ctid=05d75c05-fa1a-42e7-9cf1-eb416c396f2d" class="button">Go to Report</a>
         </div>
     </div>
 
     <script>
+        // Function to apply the TopVista background to the navbar without overriding existing CSS properties
         function applyTopVistaBackground() {
-            document.querySelector('.topvista-content').classList.add('topvista-background');
+            var navbar = document.getElementById('navbar');
+            navbar.style.backgroundImage = "url('/static/TopVistaBackground.png')";
+            navbar.style.backgroundSize = "cover";
+            navbar.style.backgroundPosition = "center";
+            navbar.style.backgroundRepeat = "no-repeat";
         }
+
+        // Add event listener to the TopVista link
+        document.getElementById('topVistaLink').addEventListener('click', function() {
+            applyTopVistaBackground();
+        });
     </script>
-    
 </body>
 </html>
