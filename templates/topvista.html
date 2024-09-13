@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TopVista</title>
     <link rel="stylesheet" type="text/css" href="/static/styles.css"> <!-- General styles -->
-    <link rel="stylesheet" type="text/css" href="/static/topvista.css"> <!-- TopVista-specific styles -->
 </head>
 <body>
     <div class="navbar" id="navbar">
@@ -30,35 +29,41 @@
         <a href="#request">Request</a>
     </div>
 
-    <div class="topvista-section">
-        <img src="/static/TOPVistaLogo.png" alt="TopVista Logo" class="topvista-logo">
-        <p class="topvista-text">Designed to improve the efficiency of pushing transformed data to a front-end UI</p>
-    </div>
+    <div class="topvista-page"> <!-- Apply background to this page container -->
+        <div class="topvista-content">
+            <div class="topvista-section">
+                <img src="/static/TOPVistaLogo.png" alt="TopVista Logo" class="topvista-image">
+                <p class="topvista-text">Designed to improve the efficiency of pushing transformed data to a front-end UI</p>
+                <div class="center-text">
+                    <a href="https://app.powerbi.com/reportEmbed?reportId=52513b97-4799-41f0-9d82-f5e116c054e5&autoAuth=true&ctid=05d75c05-fa1a-42e7-9cf1-eb416c396f2d" class="go-to-report">Go to Report</a>
+                    <hr class="horizontal-line">
+                </div>
+                                
+            </div>
+            <div class="centered-content">
+                <h4>Why TOP Vista?</h4>
+                <p>TOP Vista streamlines front-end migration into an “assembly line” process.</p>
 
-    <div class="centered-content">
-            <h4>Why TOP Vista?</h4>
-            <p>TOP Vista streamlines front-end migration into an “assembly line” process.</p>
-    
-            <h4>Challenges addressed by TOP Vista:</h4>
-            <ul>
-                <li><strong>1 Legacy Code Dependency:</strong> Data migrated and transformed in our Insights Engine often requires new front ends.</li>
-                <li><strong>2 Time Constraints:</strong> Creating new reports consumes valuable time that we frequently don't have.</li>
-                <li><strong>3 Maintenance Overhead:</strong> Every new report adds to our maintenance burden.</li>
-            </ul>
-    
-            <h4>How TOP Vista Solves these Challenges:</h4>
-            <p>TOP Vista addresses these issues by streamlining front-end migration into an “assembly line” process. This not only frees up development time but also simplifies the user journey from a consumer perspective in the following ways:</p>
-            <ul>
-                <li><strong>1 Customisable Views:</strong> Users can choose which metrics to view and how to display them.</li>
-                <li><strong>2 Centralised Metrics:</strong> All metrics are consolidated in one place.</li>
-                <li><strong>3 Zero Latency:</strong> Immediate data availability.</li>
-            </ul>
-    
-            <h4>Stay Updated</h4>
-            <p><strong>TOP Vista is pending formal release. Stay tuned for updates.</strong></p>
-            <p>If you're interested in becoming a trial user, please contact: @Matt Fletcher</p>
-    
-            <a href="https://app.powerbi.com/reportEmbed?reportId=52513b97-4799-41f0-9d82-f5e116c054e5&autoAuth=true&ctid=05d75c05-fa1a-42e7-9cf1-eb416c396f2d" class="button">Go to Report</a>
+                <h4>Challenges addressed by TOP Vista:</h4>
+                <ul>
+                    <li><strong>1 Legacy Code Dependency:</strong> Data migrated and transformed in our Insights Engine often requires new front ends.</li>
+                    <li><strong>2 Time Constraints:</strong> Creating new reports consumes valuable time that we frequently don't have.</li>
+                    <li><strong>3 Maintenance Overhead:</strong> Every new report adds to our maintenance burden.</li>
+                </ul>
+
+                <h4>How TOP Vista Solves these Challenges:</h4>
+                <p>TOP Vista addresses these issues by streamlining front-end migration into an “assembly line” process. This not only frees up development time but also simplifies the user journey from a consumer perspective in the following ways:</p>
+                <ul>
+                    <li><strong>1 Customisable Views:</strong> Users can choose which metrics to view and how to display them.</li>
+                    <li><strong>2 Centralised Metrics:</strong> All metrics are consolidated in one place.</li>
+                    <li><strong>3 Zero Latency:</strong> Immediate data availability.</li>
+                </ul>
+
+                <h4>Stay Updated</h4>
+                <p><strong>TOP Vista is pending formal release. Stay tuned for updates.</strong></p>
+                <p class="white-text">If you're interested in becoming a trial user, please contact: @Matt Fletcher</p>
+
+            </div>
         </div>
     </div>
 
@@ -70,6 +75,7 @@
             navbar.style.backgroundSize = "cover";
             navbar.style.backgroundPosition = "center";
             navbar.style.backgroundRepeat = "no-repeat";
+            navbar.style.zIndex = "9998"; // Ensure the navbar stays below the dropdown
         }
 
         // Add event listener to the TopVista link

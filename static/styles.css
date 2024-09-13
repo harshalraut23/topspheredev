@@ -14,22 +14,6 @@ body {
     font-size: 18px;
 }
 
-/* General styles for TopVista page */
-body.topvista-page {
-    background-image: url('/static/TopVistaBackground.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    font-family: 'Source Sans Pro', sans-serif; /* Ensure consistent font across the page */
-}
-
-/* Ensure other elements take full height if needed */
-html, body {
-    height: 100%;
-    width: 100%;
-}
 
 .navbar {
     display: flex;
@@ -40,7 +24,7 @@ html, body {
     font-size: 14px;
     height: 60px;
     position: relative; /* Ensure proper stacking context */
-    z-index: 1; /* Ensures it's above other content */
+    z-index: 1000;  /*Ensures it's above other content */
 }
 
 .navbar a {
@@ -146,18 +130,19 @@ ul li {
     background-color: #f9f9f9;
     min-width: auto; /* Set to auto for the content to adjust based on items */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1000;
     top: 100%;
     left: 0; /* Align the dropdown to the left of the Reports button */
     flex-direction: row; /* Arrange items in a row for horizontal layout */
+    z-index: 9999; /* Ensure it stays above other elements */
     white-space: nowrap;
-    padding: 10px 15px; /* Adjust padding for spacing */    
+    padding: 10px 15px; /* Adjust padding for spacing */   
 }
 
 /* Adjusted Dropdown Styles */
 
 .dropdown:hover .dropdown-content {
     display: flex; /* Display flex to show items horizontally */
+    z-index: 9999; /* Ensure it remains on top */
 }
 
 .dropdown-content a {
@@ -178,10 +163,6 @@ ul li {
 /* Ensure the last item doesn't have extra space */
 .dropdown-content a:last-child {
     margin-right: 0;
-}
-
-.dropdown:hover .dropdown-content {
-    display: flex; /* Display flex to show items horizontally */
 }
 
 .dropdown-section {
@@ -243,23 +224,29 @@ h1 {
     margin-bottom: 90px; /* Optional: adds some spacing between the title and content */
 }
 
-/* TopVista Page Specific Styles */
+/* Wrapper for the entire TopVista page */
+.topvista-page {
+    background-image: url('/static/TopVistaBackground.png'); /* Apply background to the TopVista page only */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Ensures full height coverage */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Ensure it's below the navbar */
+}
 
-/* Container for the TopVista logo and background */
 .topvista-section {
     position: relative;
     text-align: center;
     padding: 50px 100px;
-    background-image: url('/static/TopVistaBackground.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 /* Resizing the logo */
 .topvista-logo {
-    max-width: 500px; /* Adjust as needed */
-    height: 250px; /* Ensures aspect ratio is maintained */
+    max-width: 300px; /* Adjust as needed */
+    height: 150px; /* Ensures aspect ratio is maintained */
 }
 
 /* Title and subtitle styling */
@@ -280,6 +267,58 @@ h1 {
     text-align: center;
     margin-top: 10px;
 }
+
+.topvista-image {
+    max-width: 400px; /* Adjust as needed */
+    height: 200px; /* Ensures aspect ratio is maintained */
+}
+
+/* Content stays transparent */
+.topvista-content {
+    background: transparent;
+    width: 100%;
+}
+
+.white-text {
+    color: white;
+}
+
+.center-text {
+    text-align: center;
+    margin-top: 20px; /* Adjust this to control the space above the text */
+}
+
+.horizontal-line {
+    width: 60%; /* Adjust the width of the horizontal line */
+    border: 1px solid #001c55; /* Customize the color */
+    margin: 15px auto; /* 'auto' horizontally centers the line */
+}
+
+
+.go-to-report {
+    font-size: 1.2rem;
+    color: #001c55;
+    text-decoration: none;
+    display: inline-block;
+    position: relative; /* For the hover effect line positioning */
+}
+
+.go-to-report::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px; /* Adjust the height of the line */
+    background-color: #f4c430; /* Saffron color, matching the Reports menu */
+    bottom: -5px; /* Positioning the line below the text */
+    left: 0;
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+.go-to-report:hover::before {
+    width: 100%; /* Expand the line on hover */
+    background-color: #f4c430; /* Saffron color on hover */
+}
+
 
 
 /* Other TopVista-specific styles */
