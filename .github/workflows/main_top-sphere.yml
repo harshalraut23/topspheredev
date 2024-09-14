@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'top-sphere'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2360D910AF004E06A646FECFCCAD0A72 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_801BF1A2EF5E44DDA93F12864B743283 }}
