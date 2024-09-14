@@ -45,15 +45,13 @@
             </div>
         </div>
         <a href="#brands">Brands</a>
-            <!-- Success Stories Dropdown -->
         <div class="dropdown success-stories-dropdown">
-        <a href="#success-stories" class="dropbtn">Success Stories</a>
-        <div class="dropdown-content">
-            <a href="/snowgate">SnowGate</a>
-            <a href="/topvista">TOPVista</a>
+            <a href="#success-stories" class="dropbtn">Success Stories</a>
+            <div class="dropdown-content">
+                <a href="/snowgate">SnowGate</a>
+                <a href="/topvista">TOPVista</a>
+            </div>
         </div>
-    </div>
-
         <a href="https://maersk-tools.atlassian.net/wiki/spaces/S/overview" target="_blank">Documentation</a>
         <a href="#about-us">About Us</a>
         <a href="#feedback">Feedback</a>
@@ -66,7 +64,43 @@
             <p class="text-content">Gateway to unlock insights & drive efficiency with TechOps data and reporting.</p>
             <img src="/static/AIImageShip.png" alt="TechOps Image" class="right-image">
         </div>
-    </div>    
+    </div>
+
+    <!-- Chatbot section -->
+    <div class="chatbot-container">
+        <h2>Ask Our Chatbot</h2>
+        <input type="text" id="user-message" placeholder="Type your question here..." />
+        <button onclick="sendMessage()">Send</button>
+        <div id="response-container"></div>
+    </div>
+
+    <!-- JavaScript for chatbot functionality -->
+    <script>
+        async function sendMessage() {
+            const userMessage = document.getElementById('user-message').value;
+            const responseContainer = document.getElementById('response-container');
+            
+            if (!userMessage) {
+                responseContainer.innerHTML = "<p>Please enter a message.</p>";
+                return;
+            }
+
+            const response = await fetch('/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userMessage }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                responseContainer.innerHTML = `<p>${data.response}</p>`;
+            } else {
+                responseContainer.innerHTML = `<p>Error: ${data.error}</p>`;
+            }
+        }
+    </script>
 
     <!-- JavaScript to manage active state -->
     <script>
