@@ -74,35 +74,7 @@
         <div id="response-container"></div>
     </div>
 
-    <!-- JavaScript for chatbot functionality -->
-    <script>
-        async function sendMessage() {
-            const userMessage = document.getElementById('user-message').value;
-            const responseContainer = document.getElementById('response-container');
-            
-            if (!userMessage) {
-                responseContainer.innerHTML = "<p>Please enter a message.</p>";
-                return;
-            }
-
-            const response = await fetch('/chatbot', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: userMessage }),
-            });
-
-            const data = await response.json();
-            if (response.ok) {
-                responseContainer.innerHTML = `<p>${data.response}</p>`;
-            } else {
-                responseContainer.innerHTML = `<p>Error: ${data.error}</p>`;
-            }
-        }
-    </script>
-
-    <!-- JavaScript to manage active state -->
+     <!-- JavaScript to manage active state -->
     <script>
         // Function to set the "active" class
         function setActiveClass(event) {
