@@ -18,7 +18,7 @@ templates = Jinja2Templates(directory="templates")
 env = Environment(loader=FileSystemLoader('templates'))
 
 # Database connection setup (SQLAlchemy example)
-DATABASE_URL = "mssql+pyodbc://CloudSA8bd104de:KQxaecGh7K6V@top-insights-dev.database.windows.net/top-insights-dev-db1?driver=ODBC+Driver+17+for+SQL+Server"
+DATABASE_URL = "mssql+pyodbc://CloudSA8bd104de:KQxaecGh7K6V@top-insights-dev.database.windows.net/top-insights-dev-db1?driver=ODBC+Driver+17+for+SQL+Server;TrustServerCertificate=yes"
 engine = create_engine(DATABASE_URL)
 
 # Test connection
