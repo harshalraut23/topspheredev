@@ -4,7 +4,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from jinja2 import Template, Environment, FileSystemLoader
-import pyodbc
+
 
 app = FastAPI()
 
