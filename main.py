@@ -21,13 +21,21 @@ env = Environment(loader=FileSystemLoader('templates'))
 DATABASE_URL = "mssql+pyodbc://CloudSA8bd104de:KQxaecGh7K6V@top-insights-dev.database.windows.net/top-insights-dev-db1?driver=ODBC+Driver+17+for+SQL+Server"
 engine = create_engine(DATABASE_URL)
 
+# Test connection
+try:
+    with engine.connect() as connection:
+        result = connection.execute("SELECT 1")
+        print("Connection Successful:", result.fetchone())
+except Exception as e:
+    print("Connection Failed:", str(e))
+
 # Chatbot route (POST request to handle user input)
 @app.post("/chatbot", response_class=HTMLResponse)
 async def chatbot(request: Request, user_input: str = Form(...)):
     # Connect to the database
     with engine.connect() as connection:
         # Query the FAQ table for a matching response
-        query = text(f"SELECT response FROM [snow].[chatbot_faq] WHERE question LIKE :input")
+        query = text(f"SELECT answer FROM [snow].[chatbot_faq] WHERE question LIKE :input")
         result = connection.execute(query, {"input": f"%{user_input}%"})
         response = result.fetchone()
 
