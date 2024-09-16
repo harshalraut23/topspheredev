@@ -7,6 +7,13 @@
     <!-- Link to the external CSS file -->
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
     <style>
+        /* Container for the input and button */
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
         /* Chatbot button with image */
         .chatbot-button {
             position: fixed;
@@ -27,32 +34,47 @@
         .chatbot-modal {
             display: none;
             position: fixed;
-            bottom: 80px;
-            right: 20px;
+            bottom: 90px; /* Adjust as needed for position */
+            right: 20px; /* Adjust as needed for position */
             width: 300px;
-            height: 400px;
-            background-color: white;
+            height: 450px; /* Total height of the modal */
+            background-color: black;
             border: 2px solid black;
             border-radius: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            z-index: 1000;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* Chatbot modal header */
         .chatbot-modal-header {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
             font-weight: normal;
             font-size: 16px;
-            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space out the header items */
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
         }
 
-        /* Close button inside chatbot */
-        .close-chatbot {
-            position: absolute;
-            top: 5px;
-            right: 10px;
+        .chatbot-header span {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .clear-chatbot {
             font-size: 20px;
             cursor: pointer;
-            color: #888;
+            color: white;
+        }
+
+        .close-chatbot {
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
         }
 
         /* Style the input and button */
@@ -64,26 +86,26 @@
 
         .chatbot-modal input[type="text"] {
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 20px;
+            width: calc(100% - 40px); /* Adjust width to accommodate the button */
         }
 
         .chatbot-modal button {
             padding: 10px;
-            background-color: #0084ff;
-            color: white;
+            color: black;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 20px;
+            cursor: pointer;            
         }
 
         /* Chatbot conversation area */
         .chatbot-conversation {
-            height: 250px;
+            height: 300px;
             overflow-y: auto;
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 20px;
             margin-bottom: 10px;
             background-color: #f9f9f9;
         }
@@ -97,22 +119,22 @@
             border-radius: 10px;
         }
 
-        /* Clear button styling */
-        .clear-chatbot {
-            padding: 10px;
-            background-color: #ff4d4d;
-            color: white;
+        /* Send button styling */
+        .send-button {
+            position: absolute;
+            right: 10px; /* Adjust as needed */
             border: none;
-            border-radius: 5px;
+            font-size: 14px;
             cursor: pointer;
-            margin-top: 10px;
+            color: transparent;
+            padding: 20px;
+            margin-bottom: 40px;            
         }
 
-        .clear-chatbot:hover {
-            background-color: #ff1a1a;
+        .send-button:hover {
+            color: grey; /* Change color on hover */
         }
-
-    </style>    
+    </style>
 </head>
 <body>
     <div class="navbar">
@@ -180,21 +202,23 @@
 
     <!-- Chatbot Modal -->
     <div class="chatbot-modal" id="chatbotModal">
-        <span class="close-chatbot" onclick="toggleChatbot()">×</span>
-        <div class="chatbot-modal-header">TOP Sphere Assistant</div>
+        <div class="chatbot-modal-header">
+            <span class="clear-chatbot" onclick="clearChat()">&#8942;</span>
+            <div>TOP Sphere Assistant</div>
+            <span class="close-chatbot" onclick="toggleChatbot()">&#9660;</span>
+        </div>
 
         <!-- Conversation Section -->
         <div class="chatbot-conversation" id="chatbotConversation">
             <!-- The conversation will dynamically update here -->
         </div>
 
-        <!-- Chatbot Form -->
         <form id="chatbotForm" action="/chatbot" method="post">
-            <input type="text" id="user_input" name="user_input" placeholder="Ask me anything..." required>
-            <button type="submit">Send</button>
+            <div class="input-container">
+                <input type="text" id="user_input" name="user_input" placeholder="Ask me anything..." required>
+                <button type="submit" class="send-button">&#9654;</button>
+            </div>
         </form>
-         <!-- Clear Button -->
-         <button class="clear-chatbot" onclick="clearChat()">Clear</button>
     </div>
 
     <!-- JavaScript to manage active state and handle chatbot -->
@@ -245,9 +269,9 @@
             const chatbotConversation = document.getElementById("chatbotConversation");
             chatbotConversation.innerHTML = "";
         }
-        
-         // Function to set the "active" class
-         function setActiveClass(event) {
+
+        // Function to set the "active" class
+        function setActiveClass(event) {
             // Remove "active" class from all menu items
             document.querySelectorAll('.navbar a').forEach(function(link) {
                 link.classList.remove('active');
@@ -261,7 +285,6 @@
         document.querySelectorAll('.navbar a').forEach(function(link) {
             link.addEventListener('click', setActiveClass);
         });
-        
     </script>
 </body>
 </html>
