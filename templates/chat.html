@@ -5,18 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        /* Chatbot button with image */
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .chatbot-button img {
+            width: 60px; /* Adjust size as needed */
+            height: 60px; /* Adjust size as needed */
+        }
+
+        /* Chatbot modal window */
+        .chatbot-modal {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-modal-header {
+            font-weight: normal;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        /* Close button inside chatbot */
+        .close-chatbot {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        /* Style the input and button */
+        .chatbot-modal form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-modal input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .chatbot-modal button {
+            padding: 10px;
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Chatbot conversation area */
+        .chatbot-conversation {
+            height: 250px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        /* Chatbot message styling */
+        .chatbot-message {
+            margin-bottom: 10px;
+            font-size: 14px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Chatbot</h1>
-    <form action="/chatbot" method="post">
-        <label for="user_input">Ask me anything:</label>
-        <input type="text" id="user_input" name="user_input">
-        <button type="submit">Send</button>
-    </form>
+    <div class="navbar">
+        <a href="/" class="no-hover">techOps sphere</a>
+        <div class="dropdown">
+            <a href="#reports" class="dropbtn" id="reportButton">Reports</a>
+            <div class="dropdown-content" id="dropdown-content">
+                <!-- Reports dropdown content -->
+            </div>
+        </div>
+        <a href="#brands">Brands</a>
+        <div class="dropdown success-stories-dropdown">
+            <a href="#success-stories" class="dropbtn">Success Stories</a>
+            <div class="dropdown-content">
+                <a href="/snowgate">SnowGate</a>
+                <a href="/topvista">TOPVista</a>
+            </div>
+        </div>
+        <a href="https://maersk-tools.atlassian.net/wiki/spaces/S/overview" target="_blank">Documentation</a>
+        <a href="#about-us">About Us</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#request">Request</a>
+    </div>
 
-    {% if user_input %}
-    <h2>You asked: {{ user_input }}</h2>
-    <h2>Bot response: {{ bot_response }}</h2>
-    {% endif %}
+    <div class="content">
+        <h1>techOps sphere -</h1>
+        <div>
+            <p class="text-content">Gateway to unlock insights & drive efficiency with TechOps data and reporting.</p>
+            <img src="/static/AIImageShip.png" alt="TechOps Image" class="right-image">
+        </div>
+    </div>
+
+    <!-- Chatbot Button with Image -->
+    <button class="chatbot-button" onclick="toggleChatbot()">
+        <img src="/static/chatbot_icon1.png" alt="Chatbot Icon">
+    </button>
+
+    <!-- Chatbot Modal -->
+    <div class="chatbot-modal" id="chatbotModal">
+        <span class="close-chatbot" onclick="toggleChatbot()">×</span>
+        <div class="chatbot-modal-header">TOP Sphere Assistant</div>
+
+        <!-- Conversation Section -->
+        <div class="chatbot-conversation" id="chatbotConversation">
+            <!-- The conversation will dynamically update here -->
+        </div>
+
+        <!-- Chatbot Form -->
+        <form action="/chatbot" method="post">
+            <input type="text" id="user_input" name="user_input" placeholder="Ask me anything...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <!-- JavaScript to manage chatbot modal -->
+    <script>
+        // Function to toggle chatbot visibility and show the welcome message
+        function toggleChatbot() {
+            const chatbotModal = document.getElementById("chatbotModal");
+            const chatbotConversation = document.getElementById("chatbotConversation");
+
+            // Show or hide the modal
+            if (chatbotModal.style.display === "block") {
+                chatbotModal.style.display = "none";
+                chatbotConversation.innerHTML = ""; // Clear conversation when closing
+            } else {
+                chatbotModal.style.display = "block";
+
+                // Insert the welcome message
+                const welcomeMessage = document.createElement("div");
+                welcomeMessage.classList.add("chatbot-message");
+                welcomeMessage.innerText = "Hello and Welcome to the TOP Sphere Chat! I am your personal advisor and I am happy to support you.\nHow can I help you?";
+                chatbotConversation.appendChild(welcomeMessage);
+            }
+        }
+
+        // Function to set the "active" class
+        function setActiveClass(event) {
+            // Remove "active" class from all menu items
+            document.querySelectorAll('.navbar a').forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            // Add "active" class to the clicked menu item
+            event.target.classList.add('active');
+        }
+
+        // Attach click event listener to all menu items
+        document.querySelectorAll('.navbar a').forEach(function(link) {
+            link.addEventListener('click', setActiveClass);
+        });
+    </script>
 </body>
 </html>

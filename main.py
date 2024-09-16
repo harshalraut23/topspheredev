@@ -22,12 +22,12 @@ DATABASE_URL = "mssql+pyodbc://CloudSA8bd104de:KQxaecGh7K6V@top-insights-dev.dat
 engine = create_engine(DATABASE_URL)
 
 # Test connection
-try:
-    with engine.connect() as connection:
-        result = connection.execute(text(f"SELECT answer FROM [snow].[chatbot_faq]"))
-        print("Connection Successful:", result.fetchone())
-except Exception as e:
-    print("Connection Failed:", str(e))
+#try:
+#    with engine.connect() as connection:
+#        result = connection.execute(text(f"SELECT answer FROM [snow].[chatbot_faq]"))
+#        print("Connection Successful:", result.fetchone())
+#except Exception as e:
+#    print("Connection Failed:", str(e))
 
 # Chatbot route (POST request to handle user input)
 @app.post("/chatbot", response_class=HTMLResponse)
@@ -39,13 +39,17 @@ async def chatbot(request: Request, user_input: str = Form(...)):
         result = connection.execute(query, {"input": f"%{user_input}%"})
         response = result.fetchone()
 
-    if response:
-        bot_response = response[0]
-    else:
-        bot_response = "Sorry, I don't understand your question."
+ #   if response:
+ #       bot_response = response[0]
+ #   else:
+ #       bot_response = "Sorry, I don't understand your question."
 
     # Return the response to the template
-    return templates.TemplateResponse("chat.html", {"request": request, "user_input": user_input, "bot_response": bot_response})
+    #return templates.TemplateResponse("chat.html", {"request": request, "user_input": user_input, "bot_response": bot_response})
+    # Return the response to the template
+    return HTMLResponse(content=f"""
+        <div class="chatbot-message">{response}</div>
+    """)
 
 
 # Define route to render your HTML files
@@ -79,4 +83,3 @@ async def report3(request: Request):
 @app.get("/topvista", response_class=HTMLResponse)
 async def topvista(request: Request):
     return templates.TemplateResponse("topvista.html", {"request": request})
-    

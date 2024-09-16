@@ -6,6 +6,113 @@
     <title>FastAPI Webpage</title>
     <!-- Link to the external CSS file -->
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <style>
+        /* Chatbot button with image */
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .chatbot-button img {
+            width: 60px; /* Adjust size as needed */
+            height: 60px; /* Adjust size as needed */
+        }
+
+        /* Chatbot modal window */
+        .chatbot-modal {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-modal-header {
+            font-weight: normal;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        /* Close button inside chatbot */
+        .close-chatbot {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        /* Style the input and button */
+        .chatbot-modal form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-modal input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .chatbot-modal button {
+            padding: 10px;
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Chatbot conversation area */
+        .chatbot-conversation {
+            height: 250px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        /* Chatbot message styling */
+        .chatbot-message {
+            margin-bottom: 10px;
+            font-size: 14px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+        }
+
+        /* Clear button styling */
+        .clear-chatbot {
+            padding: 10px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .clear-chatbot:hover {
+            background-color: #ff1a1a;
+        }
+
+    </style>    
 </head>
 <body>
     <div class="navbar">
@@ -66,18 +173,81 @@
         </div>
     </div>
 
-    <!-- Chatbot section -->
-    <div class="chatbot-container">
-        <h2>Ask Our Chatbot</h2>
-        <input type="text" id="user-message" placeholder="Type your question here..." />
-        <button onclick="sendMessage()">Send</button>
-        <div id="response-container"></div>
+    <!-- Chatbot Button with Image -->
+    <button class="chatbot-button" onclick="toggleChatbot()">
+        <img src="/static/chatbot_icon1.png" alt="Chatbot Icon">
+    </button>
+
+    <!-- Chatbot Modal -->
+    <div class="chatbot-modal" id="chatbotModal">
+        <span class="close-chatbot" onclick="toggleChatbot()">×</span>
+        <div class="chatbot-modal-header">TOP Sphere Assistant</div>
+
+        <!-- Conversation Section -->
+        <div class="chatbot-conversation" id="chatbotConversation">
+            <!-- The conversation will dynamically update here -->
+        </div>
+
+        <!-- Chatbot Form -->
+        <form id="chatbotForm" action="/chatbot" method="post">
+            <input type="text" id="user_input" name="user_input" placeholder="Ask me anything..." required>
+            <button type="submit">Send</button>
+        </form>
+         <!-- Clear Button -->
+         <button class="clear-chatbot" onclick="clearChat()">Clear</button>
     </div>
 
-     <!-- JavaScript to manage active state -->
+    <!-- JavaScript to manage active state and handle chatbot -->
     <script>
-        // Function to set the "active" class
-        function setActiveClass(event) {
+        function toggleChatbot() {
+            var modal = document.getElementById("chatbotModal");
+            if (modal.style.display === "none" || modal.style.display === "") {
+                modal.style.display = "block";
+            } else {
+                modal.style.display = "none";
+            }
+        }
+
+        document.getElementById("chatbotForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const userInput = document.getElementById("user_input").value;
+
+            // Send an AJAX request
+            const response = await fetch('/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'user_input': userInput
+                })
+            });
+
+            // Handle the response
+            const responseText = await response.text();
+            const chatbotConversation = document.getElementById("chatbotConversation");
+
+            // Add user's message
+            chatbotConversation.innerHTML += `<div class="chatbot-message">You: ${userInput}</div>`;
+
+            // Add chatbot's response
+            chatbotConversation.innerHTML += `<div class="chatbot-message">${responseText}</div>`;
+
+            // Clear the input field
+            document.getElementById("user_input").value = "";
+
+            // Scroll to the bottom of the conversation area
+            chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
+        });
+
+        function clearChat() {
+            const chatbotConversation = document.getElementById("chatbotConversation");
+            chatbotConversation.innerHTML = "";
+        }
+        
+         // Function to set the "active" class
+         function setActiveClass(event) {
             // Remove "active" class from all menu items
             document.querySelectorAll('.navbar a').forEach(function(link) {
                 link.classList.remove('active');
@@ -91,6 +261,7 @@
         document.querySelectorAll('.navbar a').forEach(function(link) {
             link.addEventListener('click', setActiveClass);
         });
+        
     </script>
 </body>
 </html>
