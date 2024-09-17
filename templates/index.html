@@ -38,8 +38,7 @@
             right: 20px; /* Adjust as needed for position */
             width: 300px;
             height: 450px; /* Total height of the modal */
-            background-color: black;
-            border: 2px solid black;
+            background-color: #104862;
             border-radius: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -48,7 +47,7 @@
 
         /* Chatbot modal header */
         .chatbot-modal-header {
-            background-color: black;
+            background-color: #104862;
             color: white;
             padding: 10px 20px;
             font-weight: normal;
@@ -89,15 +88,10 @@
             margin-bottom: 40px;
             border: 1px solid #ccc;
             border-radius: 20px;
-            width: calc(100% - 40px); /* Adjust width to accommodate the button */
-        }
-
-        .chatbot-modal button {
-            padding: 10px;
-            color: black;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;            
+            width: calc(100% - 55px); /* Reduced width by 3px */
+            position: relative; /* Enable positioning adjustments */
+            left: 17px; /* Move the input box slightly to the right */
+            bottom: 6px; /* Move the input box upward */
         }
 
         /* Chatbot conversation area */
@@ -112,28 +106,54 @@
 
         /* Chatbot message styling */
         .chatbot-message {
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             font-size: 14px;
             padding: 10px;
             background-color: #e0e0e0;
             border-radius: 10px;
         }
 
-        /* Send button styling */
-        .send-button {
-            position: absolute;
-            right: 10px; /* Adjust as needed */
-            border: none;
-            font-size: 14px;
+        /* Send button styling with image */
+        .chatbot-modal button {
+            background: url('/static/send.png') no-repeat center center; /* Use the send.png image */
+            background-size: contain; /* Ensure the image fits within the button */
+            width: 30px; /* Set the width of the image */
+            height: 30px; /* Set the height of the image */
+            padding: 0; /* Remove padding */
+            border: none; /* Remove border */
             cursor: pointer;
-            color: transparent;
-            padding: 20px;
-            margin-bottom: 40px;            
+            position: absolute;
+            right: 20px; /* Position the button to the right */
+            bottom: 50px; /* Adjust for alignment with input field */
         }
 
-        .send-button:hover {
-            color: grey; /* Change color on hover */
+        /* Optional: Change appearance on hover */
+        .chatbot-modal button:hover {
+            background: url('/static/send.png') no-repeat center center;
+            background-size: contain;
         }
+        
+        .send-icon {
+            width: 30px; /* Set the size of the image */
+            height: 30px; /* Set the size of the image */
+            cursor: pointer; /* Show a pointer to indicate it’s clickable */
+            position: absolute;
+            right: 10px; /* Position the image to the right */
+            bottom: 45px; /* Align it with the input field */
+            background: none; /* Ensure no background */
+        }      
+
+        /* Add these styles to the existing CSS */
+        .chatbot-message.date {
+            font-size: 8px; /* Smaller font size for the date */
+            color: #a0a0a0; /* Light grey color for the date */
+        }
+
+        .chatbot-message.welcome {
+            font-size: 14px; /* Slightly smaller font size for the welcome message */
+            color: #000; /* Default color for the message text */
+        }
+
     </style>
 </head>
 <body>
@@ -216,7 +236,7 @@
         <form id="chatbotForm" action="/chatbot" method="post">
             <div class="input-container">
                 <input type="text" id="user_input" name="user_input" placeholder="Ask me anything..." required>
-                <button type="submit" class="send-button">&#9654;</button>
+                <button type="submit" class="send-icon">&#9654;</button>
             </div>
         </form>
     </div>
@@ -225,8 +245,22 @@
     <script>
         function toggleChatbot() {
             var modal = document.getElementById("chatbotModal");
+            var chatbotConversation = document.getElementById("chatbotConversation");
             if (modal.style.display === "none" || modal.style.display === "") {
                 modal.style.display = "block";
+
+                // Insert the welcome message and current date
+                const now = new Date();
+                const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
+                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                const formattedDate = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
+                const welcomeMessage = `
+                    <div class="chatbot-message">
+                        <div>${formattedDate}</div>
+                        <div>Hello and Welcome to the Insights Chat! I am your personal advisor and I am happy to support you. How can I help you?</div>
+                    </div>
+                    `;
+            chatbotConversation.innerHTML = welcomeMessage;
             } else {
                 modal.style.display = "none";
             }
@@ -269,6 +303,29 @@
             const chatbotConversation = document.getElementById("chatbotConversation");
             chatbotConversation.innerHTML = "";
         }
+
+        function formatDate() {
+            const options = { weekday: 'long', month: 'long', day: 'numeric' };
+            const today = new Date();
+            return today.toLocaleDateString(undefined, options);
+        }
+
+        function initializeChat() {
+            const chatbotConversation = document.getElementById("chatbotConversation");
+            
+            // Get the current date
+            const date = formatDate();
+
+            // Add the date message and the welcome message
+            chatbotConversation.innerHTML += `<div class="chatbot-message date">${date}</div>`;
+            chatbotConversation.innerHTML += `<div class="chatbot-message welcome">Hello and Welcome to the Insights Chat! I am your personal advisor and I am happy to support you. How can I help you?</div>`;
+
+            // Scroll to the bottom of the conversation area
+            chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
+        }
+
+        // Call the initializeChat function when the chatbot modal opens
+        document.getElementById("chatbotModal").addEventListener("DOMContentLoaded", initializeChat);
 
         // Function to set the "active" class
         function setActiveClass(event) {
