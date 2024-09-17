@@ -5,6 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from jinja2 import Template, Environment, FileSystemLoader
 from sqlalchemy import create_engine, text
+from sqlalchemy.exc import SQLAlchemyError
 import pyodbc
 import datetime
 
@@ -28,11 +29,20 @@ def log_event(user_id, event_type, event_description, page_url, browser_info, ip
     INSERT INTO [snow].[topsphere_WebAppLogs] (UserID, EventType, EventDescription, PageURL, BrowserInfo, IPAddress)
     VALUES (:user_id, :event_type, :event_description, :page_url, :browser_info, :ip_address);
     """
-    with engine.connect() as connection:
-        connection.execute(
-            text(insert_query),
-            {"user_id": user_id, "event_type": event_type, "event_description": event_description, "page_url": page_url, "browser_info": browser_info, "ip_address": ip_address}
-        )
+    try:
+        with engine.connect() as connection:
+            print(f"Attempting to execute query: {insert_query}")
+            result = connection.execute(
+                text(insert_query),
+                {"user_id": user_id, "event_type": event_type, "event_description": event_description, "page_url": page_url, "browser_info": browser_info, "ip_address": ip_address}
+            )
+            connection.commit()  # Explicitly commit the transaction
+
+            print("Query executed successfully.")
+            print(f"Result: {result}")
+    except SQLAlchemyError as e:
+        print(f"Error: {e}")
+        # You can also log this error to a file or monitoring system        
 
 # Chatbot route (POST request to handle user input)
 @app.post("/chatbot", response_class=HTMLResponse)
