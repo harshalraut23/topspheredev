@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from jinja2 import Template, Environment, FileSystemLoader
 from sqlalchemy import create_engine, text
 import pyodbc
+import datetime
 
 
 app = FastAPI()
@@ -21,13 +22,17 @@ env = Environment(loader=FileSystemLoader('templates'))
 DATABASE_URL = "mssql+pyodbc://CloudSA8bd104de:KQxaecGh7K6V@top-insights-dev.database.windows.net/top-insights-dev-db1?driver=ODBC+Driver+18+for+SQL+Server"
 engine = create_engine(DATABASE_URL)
 
-# Test connection
-#try:
-#    with engine.connect() as connection:
-#        result = connection.execute(text(f"SELECT answer FROM [snow].[chatbot_faq]"))
-#        print("Connection Successful:", result.fetchone())
-#except Exception as e:
-#    print("Connection Failed:", str(e))
+# Function to log events into Azure SQL Database
+def log_event(user_id, event_type, event_description, page_url, browser_info, ip_address):
+    insert_query = """
+    INSERT INTO [snow].[topsphere_WebAppLogs] (UserID, EventType, EventDescription, PageURL, BrowserInfo, IPAddress)
+    VALUES (:user_id, :event_type, :event_description, :page_url, :browser_info, :ip_address);
+    """
+    with engine.connect() as connection:
+        connection.execute(
+            text(insert_query),
+            {"user_id": user_id, "event_type": event_type, "event_description": event_description, "page_url": page_url, "browser_info": browser_info, "ip_address": ip_address}
+        )
 
 # Chatbot route (POST request to handle user input)
 @app.post("/chatbot", response_class=HTMLResponse)
@@ -38,11 +43,6 @@ async def chatbot(request: Request, user_input: str = Form(...)):
         query = text(f"SELECT answer FROM [snow].[chatbot_faq] WHERE question LIKE :input")
         result = connection.execute(query, {"input": f"%{user_input}%"})
         response = result.fetchone()
-
- #   if response:
- #       bot_response = response[0]
- #   else:
- #       bot_response = "Sorry, I don't understand your question."
 
     # Return the response to the template
     #return templates.TemplateResponse("chat.html", {"request": request, "user_input": user_input, "bot_response": bot_response})
@@ -83,3 +83,19 @@ async def report3(request: Request):
 @app.get("/topvista", response_class=HTMLResponse)
 async def topvista(request: Request):
     return templates.TemplateResponse("topvista.html", {"request": request})
+
+# Define the Snowgate page route
+@app.get("/snowgate", response_class=HTMLResponse)
+async def snowgate(request: Request):
+
+    user_id = "example_user"  # Replace with actual user identification
+    page_url = request.url.path
+    browser_info = request.headers.get('User-Agent', 'Unknown')
+    ip_address = request.client.host
+    
+    # Log page visit
+    log_event(user_id, "Page Visit", "Visited the Snowgate page", page_url, browser_info, ip_address)
+    
+    return templates.TemplateResponse("snowgate.html", {"request": request})
+
+

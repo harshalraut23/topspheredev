@@ -46,7 +46,7 @@
         <div class="dropdown success-stories-dropdown">
             <a href="#success-stories" class="dropbtn">Success Stories</a>
             <div class="dropdown-content">
-                <a href="/snowgate">SnowGate</a>
+                <a href="/snowgate" id="snowgateLink">SnowGate</a>
                 <a href="/topvista" id="topVistaLink">TOPVista</a>
             </div>
         </div>
@@ -96,14 +96,14 @@
 
     <script>
         // Function to apply the TopVista background to the navbar without overriding existing CSS properties
-        function applyTopVistaBackground() {
-            var navbar = document.getElementById('navbar');
-            navbar.style.backgroundImage = "url('/static/TopVistaBackground.png')";
-            navbar.style.backgroundSize = "cover";
-            navbar.style.backgroundPosition = "center";
-            navbar.style.backgroundRepeat = "no-repeat";
-            navbar.style.zIndex = "9998"; // Ensure the navbar stays below the dropdown
-        }
+        // function applyTopVistaBackground() {
+        //     var navbar = document.getElementById('navbar');
+        //     navbar.style.backgroundImage = "url('/static/TopVistaBackground.png')";
+        //     navbar.style.backgroundSize = "cover";
+        //     navbar.style.backgroundPosition = "center";
+        //     navbar.style.backgroundRepeat = "no-repeat";
+        //     navbar.style.zIndex = "9998"; // Ensure the navbar stays below the dropdown
+        // }
 
         // Add event listener to the TopVista link
         document.getElementById('topVistaLink').addEventListener('click', function() {

@@ -319,6 +319,63 @@ h1 {
     background-color: #f4c430; /* Saffron color on hover */
 }
 
-
-
 /* Other TopVista-specific styles */
+
+/* Wrapper for the entire snowgate page */
+.snowgate-page {
+    background-image: url('/static/Snowgatehome.png'); /* Apply background to the Snowgate page only */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 60px); /* Adjust to subtract navbar height */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1; /* Ensure it's below the navbar */
+    padding-top: 60px; /* Adjust padding for the navbar */
+}
+
+.snowgate-section {
+    position: relative;
+    text-align: center;
+    padding: 50px 100px;
+}
+
+/* Title and subtitle styling */
+.snowgate-title {
+    font-size: 20px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.background-wrapper {
+    width: 100%; /* Ensure the background covers the entire wrapper width */
+    height: 120%; /* Ensure the background covers the entire wrapper width */
+    padding: -50px;
+}
+
+.snowgate-subtitle {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.snowgate-text {
+    color: black;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.snowgate-image {
+    max-width: 400px; /* Adjust as needed */
+    height: 200px; /* Ensures aspect ratio is maintained */
+}
+
+/* Content stays transparent */
+.snowgate-content {
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+

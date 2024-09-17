@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnowGate</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css"> <!-- General styles -->
+</head>
+<body>
+    <div class="navbar" id="navbar">
+        <a href="/" class="no-hover">techOps sphere</a>
+        <div class="dropdown">
+            <a href="#reports" class="dropbtn">Reports</a>
+            <div class="dropdown-content">
+                <div class="dropdown-section">
+                    <div class="title">O&L Tech Ops Performance Reports</div>
+                    <div class="report-list">
+                        <a href="/report1">Monthly 2inBox Ops Excellence Report</a>
+                        <a href="/report2">Weekly Ops Excellence Report</a>
+                        <a href="/report3">Platform Spotlight Update</a>
+                    </div>
+                </div>
+                <div class="dropdown-section">
+                    <div class="title">Overall Technology Operational Insights</div>
+                    <div class="report-list">
+                        <a href="/report4">Enterprise Tech Update</a>
+                    </div>
+                </div>
+                <div class="dropdown-section">
+                    <div class="title">Terminal Insights</div>
+                    <div class="report-list">
+                        <a href="/report5">Terminal Operations Monthly Report</a>
+                        <a href="/report6">Terminal Performance Overview</a>
+                    </div>
+                </div>
+                <div class="dropdown-section">
+                    <div class="title">Upcoming Reports</div>
+                    <div class="report-list">
+                        <a href="/report7">Future Technology Initiatives</a>
+                        <a href="/report8">Roadmap Insights</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#brands">Brands</a>
+        <div class="dropdown success-stories-dropdown">
+            <a href="#success-stories" class="dropbtn">Success Stories</a>
+            <div class="dropdown-content">
+                <a href="/snowgate" id="snowgateLink">SnowGate</a>
+                <a href="/topvista" id="topVistaLink">TOPVista</a> 
+            </div>
+        </div>
+        <a href="https://maersk-tools.atlassian.net/wiki/spaces/S/overview" target="_blank">Documentation</a>
+        <a href="#about-us">About Us</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#request">Request</a>
+    </div>
+
+    <div class="snowgate-page"> <!-- Page container -->
+        <div class="snowgate-content">
+            <div class="background-wrapper"> <!-- Wrapper for the background image -->
+                <div class="snowgate-section">
+                    <img src="/static/Snowgatelogo.png" alt="Snowgate Logo" class="snowgate-image">
+                    <p class="snowgate-text">Cloud based data-warehouse reporting engine</p>
+                    <div class="snowgate-text">
+                        <a href="https://app.powerbi.com/reportEmbed?reportId=0c369089-9218-4115-9068-630ed55b7a86&autoAuth=true&ctid=05d75c05-fa1a-42e7-9cf1-eb416c396f2d" class="go-to-report">Go to Report</a>
+                    </div>
+                </div>
+            </div>
+            <div class="snowgate-content">
+                <h4>Background & Need for SnowGate:</h4>
+                <p>Previously, the TechOps team used Snowmirror as the data source for building insights and reports in Power BI. However, with Snowmirror scheduled for decommissioning on December 17, 2023, it posed a major risk to the continuity of our Power BI reports. To ensure uninterrupted reporting, the team brainstormed and developed SnowGate—a cloud-based data warehouse reporting engine.</p>
+                <h4>Architecture of SnowGate:</h4>
+                <p>SnowGate is designed to harness the capabilities of modern cloud technologies:</p>
+                <ul>
+                    <li><strong>Data Ingestion:</strong> Using Azure Data Factory (ADF) pipelines with an API endpoint, data is fetched from ServiceNow and saved as JSON files in Azure Blob Storage.</li>
+                    <li><strong>Data Transformation:</strong> JSON files are unflattened using Azure SQL stored procedures and stored in the raw layer of the database.</li>
+                    <li><strong>Staging and Consumption Layers:</strong> Every new report adds to our maintenance burden.</li>
+                </ul>
+                <h4>Key Features & Optimizations:</h4>
+                <ul>
+                    <li><strong>Metadata-Driven Automation:</strong> The solution is fully automated through a metadata-driven approach. JSON files and target tables are preloaded into master tables, and backend data refresh cycles are controlled by predefined metadata in these tables, allowing for automatic periodic refreshes.</li>
+                    <li><strong>Incremental Data Loading:</strong> SnowGate is highly optimized to load data incrementally, reducing the resources required for ETL operations. Only new or updated data is processed, saving time and computational power.</li>
+                    <li><strong>Scalability with Dynamic Coding:</strong> Thanks to dynamic coding practices, SnowGate is fully scalable. A single ADF pipeline can handle multiple source files and target tables. When a new source or target is introduced, only an entry in the master table is required—no additional coding or configurations are necessary.</li>
+                    <li><strong>Proactive Error Logging:</strong> SnowGate includes built-in error logging mechanisms to preemptively address issues before they impact the reporting layer.</li>
+                    <li><strong>Enhanced Control Over Data:</strong> With data hosted in an Azure SQL data warehouse, SnowGate provides better control over creating and altering tables and fields. This improves flexibility and agility in handling data changes.</li>
+                    <li><strong>Data Security:</strong> A role-based security model ensures that access to data is controlled at the user level, safeguarding sensitive information.</li>                    
+                    <li><strong>Improved Power BI Performance:</strong> Most compute-intensive operations are handled in the Azure environment (ADF and SQL), minimizing the burden on Power BI. As a result, reports are faster and more efficient to render.</li>
+                    <li><strong>Automated Power BI Refresh:</strong> The data-driven solution includes ADF-triggered Power BI dataflow refreshes using Power Automate, ensuring data in reports is up-to-date without manual intervention.</li>
+                    <li><strong>BOT-Enabled Feedback System:</strong> A BOT-based feedback mechanism informs the team about the success or failure of dataflows, enabling quick resolution of discrepancies before they impact reporting.</li>
+                </ul>
+                <h4>Tools & Technologies Used in SnowGate:</h4>
+                <ul>
+                    <li><strong>Azure Data Factory (ADF):</strong> for data ingestion and transformation.</li>
+                    <li><strong>Azure Blob Storag:</strong> for storing JSON files.</li>
+                    <li><strong>Azure SQL Database:</strong> for raw, staging, and consumption layers.</li>
+                    <li><strong>Power BI:</strong> for reporting and insights.</li>
+                    <li><strong>Power Automate:</strong> for triggering report refreshes.</li>
+                    <li><strong>Python:</strong> (planned for future enhancements) to address specific pain points.</li>                    
+                </ul>                
+                <h4>Future Roadmap:</h4>
+                <p>As part of our continuous improvement strategy, we are exploring new functionalities using Python to further optimize and enhance SnowGate. Our goal is to address existing challenges and maintain a robust, scalable solution.</p>
+                <h4>Time to Market:</h4>
+                <p>SnowGate was developed in under 60 days to replace SnowMirror, ensuring no disruption to TechOps reporting workflows. This rapid deployment was crucial in maintaining continuity and stakeholder satisfaction.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to ensure the background is applied to SnowGate page if needed dynamically
+        document.addEventListener("DOMContentLoaded", function() {
+            var snowgatePage = document.querySelector(".snowgate-page");
+            snowgatePage.style.backgroundImage = "url('/static/SnowGate_1.png')";
+            snowgatePage.style.backgroundSize = "100% 100%";
+            snowgatePage.style.backgroundPosition = "center";
+            snowgatePage.style.backgroundRepeat = "no-repeat";
+        });
+
+    </script>
+</body>
+</html>
