@@ -4,10 +4,10 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from jinja2 import Template, Environment, FileSystemLoader
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text, Table, MetaData, insert
 from sqlalchemy.exc import SQLAlchemyError
 import pyodbc
-import datetime
+from datetime import datetime  # Ensure proper import
 
 
 app = FastAPI()
@@ -43,6 +43,62 @@ def log_event(user_id, event_type, event_description, page_url, browser_info, ip
     except SQLAlchemyError as e:
         print(f"Error: {e}")
         # You can also log this error to a file or monitoring system        
+
+
+# Function to log uptime/downtime events
+def log_uptime_event(event_type):
+    insert_query = """
+    INSERT INTO [snow].[UptimeLogs] (EventType, EventTime)
+    VALUES (:event_type, :event_time);
+    """
+    
+    try:
+        with engine.connect() as connection:
+            print(f"Attempting to log event: {event_type}")
+            result = connection.execute(
+                text(insert_query),
+                {
+                    "event_type": event_type,
+                    "event_time": datetime.now()  # Correct usage
+                }
+            )
+            connection.commit()  # Explicitly commit the transaction
+            print("Uptime event logged successfully.")
+            print(f"Result: {result}")
+    except SQLAlchemyError as e:
+        print(f"Error: {e}")
+        # Optionally, log the error to a monitoring system or a file
+
+# Example usage
+log_uptime_event('Uptime')  
+
+# Function to log uptime/downtime events
+# Function to log uptime/downtime events
+def log_uptime_event(event_type):
+    insert_query = """
+    INSERT INTO [snow].[topsphere_application_Logs] (EventType, EventTime)
+    VALUES (:event_type, :event_time);
+    """
+    
+    try:
+        with engine.connect() as connection:
+            print(f"Attempting to log event: {event_type}")
+            result = connection.execute(
+                text(insert_query),
+                {
+                    "event_type": event_type,
+                    "event_time": datetime.now()
+                }
+            )
+            connection.commit()  # Explicitly commit the transaction
+            print("Uptime event logged successfully.")
+            print(f"Result: {result}")
+    except SQLAlchemyError as e:
+        print(f"Error: {e}")
+        # Optionally, log the error to a monitoring system or a file
+
+# Example usage
+log_uptime_event('Uptime')
 
 # Chatbot route (POST request to handle user input)
 @app.post("/chatbot", response_class=HTMLResponse)
