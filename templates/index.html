@@ -159,7 +159,7 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="/" class="no-hover">techOps sphere</a>
+        <a href="/" class="no-hover">insights sphere</a>
         <div class="dropdown">
             <a href="#reports" class="dropbtn" id="reportButton">Reports</a>
             <div class="dropdown-content" id="dropdown-content">
@@ -167,9 +167,9 @@
                 <div class="dropdown-section">
                     <div class="title">O&L Tech Ops Performance Reports</div>
                     <div class="report-list">
-                        <a href="/report1">Monthly 2inBox Ops Excellence Report</a>
+                        <a href="/report1">Platform Spotlight Update</a>
                         <a href="/report2">Weekly Ops Excellence Report</a>
-                        <a href="/report3">Platform Spotlight Update</a>
+                        <a href="/report3">Monthly 2inBox Ops Excellence Report</a> 
                     </div>
                 </div>
                 <div class="dropdown-section">
@@ -194,7 +194,7 @@
                 </div>
             </div>
         </div>
-        <a href="#brands">Brands</a>
+        <a href="#brands">Business Units</a>
         <div class="dropdown success-stories-dropdown">
             <a href="#success-stories" class="dropbtn">Success Stories</a>
             <div class="dropdown-content">
@@ -203,13 +203,14 @@
             </div>
         </div>
         <a href="https://maersk-tools.atlassian.net/wiki/spaces/S/overview" target="_blank">Documentation</a>
+        <a href="https://insightshub.maersk-digital.net/form/feedback/3bea0ee4-1c3c-45a7-b37d-04ac393a5ac2?as-embed-variant=scroll">Feedback</a>
+        <a href="https://insightshub.maersk-digital.net/feature-suggestions/raise-feature-suggestions/e5791bd9-21f6-411d-b81a-5624fce2262e">Request</a>        
         <a href="#about-us">About Us</a>
-        <a href="#feedback">Feedback</a>
-        <a href="#request">Request</a>
     </div>
 
     <!-- Main Content Section -->
     <div class="main-content">
+        
         <!-- Title -->
         <div class="title-container">
             <h1 class="title"></h1>
@@ -217,7 +218,7 @@
         <!-- Text and Explore Button Container -->
         <div class="text-container">
             <h2>Centralized Platform Empowering Insights and Innovations</h2>
-            <p class="description">TOP Sphere envisioned as a centralized, comprehensive platform that showcases the wide array of initiatives and contributions by the TechOps Excellence Team. It serves as a unified access point, offering users a seamless experience to navigate, explore, and interact with the team’s insights, reports, and products.
+            <p class="description">Insights Sphere envisioned as a centralized, comprehensive platform that showcases the wide array of initiatives and contributions by the TechOps Insights Team. It serves as a unified access point, offering users a seamless experience to navigate, explore, and interact with the team’s insights, reports, and products.
                 It simplifies how users and stakeholders access key information, enhancing transparency, visibility, and collaboration. Designed to scale with evolving business needs. Its open structure allows for future expansion into embedding reports from various BI tools
             </p>
             <button id="learnMoreBtn" class="explore-button">Learn More</button>
@@ -229,27 +230,18 @@
     </div>
 
     <!-- Black Rectangle -->
-    <div class="black-rectangle"></div>
-    
+        
     <!-- Additional Content Section (Initially Hidden) -->
     <div id="additionalContent" class="additional-content" style="display: none;">
-        <div class="additional-content-title">
-            <h2>Our Responsibilities</h2>
-            <p class="additional-content-description">The TechOps Excellence Team plays a vital role in delivering strategic insights to leadership. Our key responsibilities include providing comprehensive 
-                Power BI reports that cover critical metrics such as ServiceNow Incident Count, Mean Time to Resolve (MTTR), Mean Time to Detect (MTTD), and service downtime analytics. 
-                We also develop innovative solutions like Snowgate and TopVista, while collaborating with platforms such as O&L, CMDB, and APM Terminals. Additionally, we support external audit 
-                projects to ensure operational excellence.
-            </p>
-        </div>
         <div class="additional-content-title">
             <h2>Key Benefits</h2>
             <ul class="additional-content-description">
             <ul>
                 <li><strong>Versatile Reporting:</strong> By hosting or embedding reports from various BI tools, we reduce future dependencies on specific tools like Power BI.</li>
                 <li><strong>Cost-Effective:</strong> A solution that is scalable and economical for the organization.</li>
-                <li><strong>Enhanced User Support:</strong> An integrated chatbot to assist users with terminology and help them understand TechOps Excellence processes.</li>
-                <li><strong>Faster Time to Market:</strong> All team deliverables are hosted on TOP Sphere, ensuring they are always available online.</li>
-                <li><strong>Cross-Team Collaboration:</strong> This shared platform allows other teams to learn about the work being done by TechOps Excellence, fostering greater transparency and collaboration.</li>
+                <li><strong>Enhanced User Support:</strong> An integrated chatbot to assist users with terminology and help them understand TechOps Insights processes.</li>
+                <li><strong>Faster Time to Market:</strong> All team deliverables are hosted on Insights Sphere, ensuring they are always available online.</li>
+                <li><strong>Cross-Team Collaboration:</strong> This shared platform allows other teams to learn about the work being done by TechOps Insights, fostering greater transparency and collaboration.</li>
             </ul>            
         </div>
         <div class="additional-content-title">
@@ -268,7 +260,7 @@
                 <ul class="additional-content-description">
                     <ul>
                         <li><strong>JIRA Integration:</strong> Approved user requests will be converted into stories and added to our backlog for swift action.</li>
-                        <li><strong>Usage Metrics:</strong> Provide insights into usage patterns for different sections of TOP Sphere.</li>
+                        <li><strong>Usage Metrics:</strong> Provide insights into usage patterns for different sections of Insights Sphere.</li>
                         <li><strong>Bug Tracking:</strong> Implement quick issue resolution through robust bug tracking.</li>
                         <li><strong>Exploration of New BI Tools:</strong>Further reduce dependencies by embedding reports from additional BI tools.</li>
                         <li><strong>Advanced Self-Service BI:</strong> Empower users with more sophisticated self-service BI capabilities.</li>
@@ -323,7 +315,7 @@
                 const welcomeMessage = `
                     <div class="chatbot-message">
                         <div>${formattedDate}</div>
-                        <div>Hello and Welcome to the Insights Chat! I am your personal advisor and I am happy to support you. How can I help you?</div>
+                        <div>Hello and Welcome to the Insights Chat! How can I help you?</div>
                     </div>
                     `;
             chatbotConversation.innerHTML = welcomeMessage;
@@ -384,7 +376,7 @@
 
             // Add the date message and the welcome message
             chatbotConversation.innerHTML += `<div class="chatbot-message date">${date}</div>`;
-            chatbotConversation.innerHTML += `<div class="chatbot-message welcome">Hello and Welcome to the Insights Chat! I am your personal advisor and I am happy to support you. How can I help you?</div>`;
+            chatbotConversation.innerHTML += `<div class="chatbot-message welcome">Hello and Welcome to the Insights Chat! How can I help you?</div>`;
 
             // Scroll to the bottom of the conversation area
             chatbotConversation.scrollTop = chatbotConversation.scrollHeight;

@@ -109,12 +109,17 @@ async def chatbot(request: Request, user_input: str = Form(...)):
         query = text(f"SELECT answer FROM [snow].[chatbot_faq] WHERE question LIKE :input")
         result = connection.execute(query, {"input": f"%{user_input}%"})
         response = result.fetchone()
+        if response and len(response) == 1:
+            trimmed_response = response[0]  # Access the first element (removes the tuple structure)
+        else:
+            trimmed_response = response
 
+        print(trimmed_response)
     # Return the response to the template
     #return templates.TemplateResponse("chat.html", {"request": request, "user_input": user_input, "bot_response": bot_response})
     # Return the response to the template
     return HTMLResponse(content=f"""
-        <div class="chatbot-message">{response}</div>
+        <div class="chatbot-message">{trimmed_response}</div>
     """)
 
 
@@ -163,5 +168,3 @@ async def snowgate(request: Request):
     log_event(user_id, "Page Visit", "Visited the Snowgate page", page_url, browser_info, ip_address)
     
     return templates.TemplateResponse("snowgate.html", {"request": request})
-
-

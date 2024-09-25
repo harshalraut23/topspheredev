@@ -4,11 +4,11 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('/static/Snowgatehome.png');
+    background-color: #b5e0f5;
     background-size: cover; /* Cover the entire viewport */
     background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating the image */
-    color: #000000;
+    /* background-repeat: no-repeat; Prevent repeating the image */
+    /* color: #000000; */
     overflow-x: hidden;
     padding-bottom: 50px;
     font-size: 18px;
@@ -152,7 +152,7 @@ ul li {
     text-decoration: none;
     display: block;
     text-align: left;
-    margin-right: 10px; /* Add horizontal space between items */
+    margin-right: 0px; /* Add horizontal space between items */
 }
 
 .dropdown-content a:hover {
@@ -167,13 +167,13 @@ ul li {
 
 .dropdown-section {
     margin-bottom: 20px; /* Add space between sections */
+    text-align: left;
 }
 
 .dropdown-section .title {
     font-size: 14px; /* Adjust the font size as needed */
     margin-bottom: 5px; /* Add space below each title */
     color: #333; /* Optional: adjust the color */
-    padding: 10px 15px; /* Adjust padding for spacing */    
     text-align: left;
 }
 
@@ -192,18 +192,19 @@ ul li {
 .title-container {
     width: 100%; /* Makes sure the title takes the full width */
     text-align: left; /* Aligns the title to the left */
-    margin-right: 2px; /* Adjust the right margin to move it 2px */
+    margin-right: 0px; /* Adjust the right margin to move it 2px */
 }
 
 .title {
     margin-left: 20px; /* Move the title slightly to the right */
     font-size: 36px; /* Adjust the title size if necessary */
     color: #d2d9dc; /* Title color */
+    text-align: left;
 }
 
 /* Style for the text container */
 .text-container {
-    margin-left: 40px; /* Move the title slightly to the right */
+    margin-left: 10px; /* Move the title slightly to the right */
     max-width: 40%; /* Adjust as needed */
     margin-top: 10px; /* Ensure space between title and text */
     color: #008e9a; /* Title color */
@@ -262,11 +263,12 @@ ul li {
 .additional-content {
     width: 100%; /* Use viewport width for full width */
     padding: 10px 20px;
-    background-image: url('/static/WhySnowGateBackGround.png');
+    /* background-image: url('/static/WhySnowGateBackGround.png'); */
     margin-top: 40px; /* Space above the additional content */
     position: relative; /* To ensure it aligns correctly if necessary */
     transform: translateX(0%); /* Adjust to center */
     top: 35vh;
+    background-color: #b5e0f5;
 }
 
 .additional-content-title {
@@ -381,7 +383,7 @@ ul li {
 
 /* Wrapper for the entire snowgate page */
 .snowgate-page {
-    background-image: url('/static/Snowgatehome.png'); /* Apply background to the Snowgate page only */
+    /* background-image: url('/static/Snowgatehome.png'); Apply background to the Snowgate page only */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -400,17 +402,17 @@ ul li {
 }
 
 /* Title and subtitle styling */
-.snowgate-title {
+/* .snowgate-title {
     font-size: 20px;
     text-align: center;
     color: whitesmoke;
-}
+} */
 
-.background-wrapper {
-    width: 100%; /* Ensure the background covers the entire wrapper width */
-    height: 120%; /* Ensure the background covers the entire wrapper width */
+/* .background-wrapper {
+    width: 100%;  Ensure the background covers the entire wrapper width 
+    height: 120%;  Ensure the background covers the entire wrapper width 
     padding: -50px;
-}
+} */
 
 .snowgate-subtitle {
     font-size: 18px;
@@ -434,7 +436,7 @@ ul li {
     padding: 20px;
     border-radius: 8px;
     width: 80%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .sphere-centered-content {
@@ -442,4 +444,3 @@ ul li {
     max-width: 900px;
     margin: 0 auto; /*Center the content */
 }
-
